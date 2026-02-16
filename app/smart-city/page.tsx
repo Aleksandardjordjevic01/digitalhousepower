@@ -7,6 +7,7 @@ import {
   CursorCard,
 } from "@/components/ui/cursor-cards";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
+import Image from "next/image";
 import {
   Building2,
   Car,
@@ -29,6 +30,7 @@ export default function SmartCityPage() {
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
       icon: Building2,
+      image: "/assets/images/smart-city.png",
       description:
         "Integrated urban systems for efficient city management",
       detailedDescription:
@@ -50,6 +52,7 @@ export default function SmartCityPage() {
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-500/10",
       icon: Car,
+      image: "/assets/images/smart-highway.png",
       description: "Intelligent transport and traffic safety systems",
       detailedDescription:
         "Transport systems are designed to improve road flow and traffic management combined, traffic and incident detection infrastructure, traffic management platforms, traffic analytics, and data analytics information delivery and long-term planning.",
@@ -70,6 +73,7 @@ export default function SmartCityPage() {
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-500/10",
       icon: AlertTriangle,
+      image: "/assets/images/emergency-system.png",
       description: "Predictive monitoring and early warning solutions",
       detailedDescription:
         "Emergency systems are designed to detect risks early, respond fast, recover, and protect lives, property, and infrastructure. These systems rely on real-time data, analytics, and a controlled alerting procedure.",
@@ -169,24 +173,30 @@ export default function SmartCityPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden"
+                className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col"
               >
                 {/* Colored Header */}
                 <div
                   className={`h-48 flex items-center justify-center bg-gradient-to-br ${solution.color} relative`}
                 >
-                  <solution.icon className="h-24 w-24 text-white opacity-90" />
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    width={200}
+                    height={200}
+                    className="object-contain p-4"
+                  />
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-center">
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-lg font-bold mb-3 text-center">
                     {solution.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4 text-center italic">
+                  <p className="text-gray-400 text-xs mb-4 text-center italic">
                     {solution.description}
                   </p>
-                  <p className="text-gray-400 text-sm mb-6 text-justify leading-relaxed">
+                  <p className="text-gray-400 text-xs mb-6 text-justify leading-relaxed">
                     {solution.detailedDescription}
                   </p>
 
@@ -198,7 +208,7 @@ export default function SmartCityPage() {
                       {solution.keyServiceAreas.map((area, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-sm text-gray-400"
+                          className="flex items-start gap-2 text-xs text-gray-400"
                         >
                           <Check className="h-4 w-4 text-[#34bb92] mt-0.5 flex-shrink-0" />
                           <span>{area}</span>
@@ -207,11 +217,11 @@ export default function SmartCityPage() {
                     </ul>
                   </div>
 
-                  <div className="pt-4 border-t border-white/10">
+                  <div className="pt-4 border-t border-white/10 mt-auto">
                     <h4 className="text-sm font-semibold mb-2 text-gray-300">
                       Value delivered:
                     </h4>
-                    <p className="text-sm text-gray-400 italic">
+                    <p className="text-xs text-gray-400 italic">
                       {solution.valueDelivered}
                     </p>
                   </div>

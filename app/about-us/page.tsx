@@ -541,25 +541,27 @@ export default function AboutUsPage() {
 
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="companies-reputation" className="border-2 border-[#34bb92]/50 rounded-lg px-6 bg-[#030303]/80 data-[state=open]:bg-[#030303]">
-                <AccordionTrigger className="text-lg font-bold text-white hover:text-[#34bb92] py-4">
+                <AccordionTrigger className="text-base no-underline font-bold text-white hover:text-[#34bb92] py-4">
                   Companies Reputation
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="grid md:grid-cols-2 gap-6 pt-4 pb-2">
-                    <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#34bb92]/20">
+                    <div className="relative w-full rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#34bb92]/20">
                       <Image
-                        src="/assets/images/certificate-reputation.jpg"
+                        src="/assets/images/za-dobru-reputaciju-scaled.png"
                         alt="Certificate of Good Reputation"
-                        fill
-                        className="object-contain p-4"
+                        width={800}
+                        height={1000}
+                        className="w-full h-auto object-contain"
                       />
                     </div>
-                    <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#34bb92]/20">
+                    <div className="relative w-full rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#34bb92]/20">
                       <Image
-                        src="/assets/images/certificate-quality.jpg"
+                        src="/assets/images/za-vrhunski-kvalitet-scaled.png"
                         alt="Certificate of Quality"
-                        fill
-                        className="object-contain p-4"
+                        width={800}
+                        height={1000}
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                   </div>
