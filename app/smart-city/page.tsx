@@ -279,7 +279,7 @@ export default function SmartCityPage() {
             className="mb-16"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
-              DIGITALHOUSEPOWER'S ROLE
+              DIGITALHOUSEPOWER&apos;S ROLE
             </h2>
             <p className="text-gray-400 text-sm text-center mb-12 max-w-3xl mx-auto">
               DigitalHousePower acts as a technology and consulting partner,

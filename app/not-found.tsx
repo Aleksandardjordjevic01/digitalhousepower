@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Compass, Home } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Empty,
@@ -74,22 +75,22 @@ export default function NotFoundPage() {
             <Glitchy404 width={400} height={100} color="#ffffff" />
           </div>
           <EmptyDescription className="text-nowrap">
-            The page you're looking for might have been <br />
-            moved or doesn't exist.
+            The page you&apos;re looking for might have been <br />
+            moved or doesn&apos;t exist.
           </EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
             <Button asChild>
-              <a href="/">
+              <Link href="/">
                 <Home className="mr-2 h-4 w-4" /> Go Home
-              </a>
+              </Link>
             </Button>
 
             <Button asChild variant="outline">
-              <a href="/#services">
+              <Link href="/#services">
                 <Compass className="mr-2 h-4 w-4" /> Explore
-              </a>
+              </Link>
             </Button>
           </div>
         </EmptyContent>

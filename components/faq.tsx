@@ -35,7 +35,7 @@ export default function FAQs() {
               Frequently asked Questions
             </h2>
             <p className="text-gray-400">
-              Got questions? We've got answers. Explore our FAQs to learn more about our process, pricing, and how we can bring your vision to life.
+              Got questions? We&apos;ve got answers. Explore our FAQs to learn more about our process, pricing, and how we can bring your vision to life.
             </p>
             <button className="mt-8 px-6 py-3 bg-[#34bb92] text-black rounded-lg font-medium hover:bg-[#2da881] transition-colors flex items-center gap-2 mx-auto lg:mx-0">
               Ask a question
