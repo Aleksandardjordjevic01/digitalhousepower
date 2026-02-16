@@ -100,11 +100,11 @@ export default function ContactPage() {
           >
             <Badge className="mb-4 text-base text-black">Get in Touch</Badge>
             <h1 className="text-3xl md:text-5xl font-bold mb-6">
-              Let's Start a <span className="text-[#34bb92]">Conversation</span>
+              Let&apos;s Start a <span className="text-[#34bb92]">Conversation</span>
             </h1>
             <p className="text-base text-gray-400 max-w-2xl mx-auto">
-              Have a project in mind? We'd love to hear about it. Send us a message
-              and we'll get back to you as soon as possible.
+              Have a project in mind? We&apos;d love to hear about it. Send us a message
+              and we&apos;ll get back to you as soon as possible.
             </p>
           </motion.div>
 
@@ -238,7 +238,7 @@ export default function ContactPage() {
                 </p>
                 
                 <div className="mb-8">
-                  <h3 className="text-lg font-semibold mb-4">I'm interested in...</h3>
+                  <h3 className="text-lg font-semibold mb-4">I&apos;m interested in...</h3>
                   <div className="flex flex-wrap gap-3">
                     {interestOptions.map((option) => (
                       <button

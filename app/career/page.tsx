@@ -230,8 +230,8 @@ export default function CareerPage() {
                   >
                     <option value="">-viii School (Level 2, vocational qualification)</option>
                     <option value="high-school">High School</option>
-                    <option value="bachelor">Bachelor's Degree</option>
-                    <option value="master">Master's Degree</option>
+                    <option value="bachelor">Bachelor&apos;s Degree</option>
+                    <option value="master">Master&apos;s Degree</option>
                     <option value="phd">PhD</option>
                   </select>
                 </div>
