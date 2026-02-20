@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: "How can I start cooperation?",
-    answer: "You can contact us via the contact form, email, or schedule a meeting. After that, we analyze your project and propose the best solution."
+    answer: "You can contact us via the contact form, email, or request consultation. After that, we analyze your project and propose the best solution."
   }
 ];
 

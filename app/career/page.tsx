@@ -4,10 +4,12 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
+import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Mail, MapPin, Hash, FileText, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function CareerPage() {
+  const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
   const [formData, setFormData] = useState({
     fullName: "",
     dateOfBirth: "",
@@ -102,9 +104,21 @@ export default function CareerPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 h-fit"
             >
-              <h3 className="text-lg font-bold mb-6">We are available:</h3>
+              <CursorCard
+                className="h-fit rounded-2xl"
+                glowColor={glowColors[0]}
+                borderColor={glowColors[0]}
+                glowIntensity={500}
+              >
+                <div className="relative rounded-2xl p-8 h-fit bg-black/[0.7] border border-white/[0.12]">
+                  {/* Glossy overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-bold mb-6">We are available:</h3>
               <div className="space-y-4 text-sm">
                 <p className="text-gray-400">
                   weekdays from <span className="text-[#34bb92]">8 AM to 6 PM</span>
@@ -159,6 +173,9 @@ export default function CareerPage() {
                   </p>
                 </div>
               </div>
+                  </div>
+                </div>
+              </CursorCard>
             </motion.div>
           </div>
 
@@ -167,9 +184,21 @@ export default function CareerPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 md:p-10"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <CursorCard
+              className="rounded-2xl"
+              glowColor={glowColors[1]}
+              borderColor={glowColors[1]}
+              glowIntensity={500}
+            >
+              <div className="relative rounded-2xl p-4 md:p-10 bg-black/[0.7] border border-white/[0.12]">
+                {/* Glossy overlay effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* First and Last Name */}
                 <div>
@@ -321,7 +350,10 @@ export default function CareerPage() {
               >
                 Apply
               </Button>
-            </form>
+                  </form>
+                </div>
+              </div>
+            </CursorCard>
           </motion.div>
         </div>
       </section>

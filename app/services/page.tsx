@@ -171,6 +171,16 @@ export default function ServicesPage() {
     },
   ];
 
+  const glowColors = [
+    "#6536a1", // purple
+    "#3f97e7", // blue
+    "#59dbe9", // light blue
+    "#21dcdb", // cyan
+    "#7cf8ee", // light cyan
+    "#fddf60", // yellow
+    "#ffbb01", // orange
+  ];
+
   return (
     <div className="min-h-screen bg-[#030303] text-foreground relative overflow-hidden">
       <AnimatedDotsBackground />
@@ -202,17 +212,30 @@ export default function ServicesPage() {
 
           {/* Services Grid */}
           <CursorCardsContainer className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
+            {services.map((service, index) => {
+              const glowColor = glowColors[index % glowColors.length];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <CursorCard className="h-full rounded-2xl">
-                  <div className="bg-[#0a0a0a] rounded-2xl p-8 h-full group">
+                <CursorCard 
+                  className="h-full rounded-2xl"
+                  glowColor={glowColor}
+                  borderColor={glowColor}
+                  glowIntensity={500}
+                >
+                  <div className="relative rounded-2xl p-8 h-full group overflow-hidden bg-black/[0.7] border border-white/[0.12]">
+                    {/* Glossy overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10">
                 <div className="mb-6">
-                  <div className="inline-flex p-4 bg-[#34bb92]/10 rounded-xl group-hover:bg-[#34bb92]/20 transition-colors">
+                  <div className="inline-flex p-4 bg-[#34bb92]/10 rounded-xl group-hover:bg-[#34bb92]/20 transition-colors backdrop-blur-sm">
                     <service.icon className="h-8 w-8 text-[#34bb92]" />
                   </div>
                 </div>
@@ -241,10 +264,11 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                 </div>
+                    </div>
                   </div>
                 </CursorCard>
               </motion.div>
-            ))}
+            )})}
           </CursorCardsContainer>
         </div>
       </section>

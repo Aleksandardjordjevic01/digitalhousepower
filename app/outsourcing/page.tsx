@@ -7,6 +7,8 @@ import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Check, Users, Target, Code, Handshake } from "lucide-react";
 
 export default function OutsourcingPage() {
+  const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
+
   const clientNeeds = [
     "Corporate ownership and accountability (inside)",
     "Can be entrusted with full project ownership for defined project segments",
@@ -151,28 +153,42 @@ export default function OutsourcingPage() {
             className="mb-8"
           >
             <CursorCardsContainer className="grid md:grid-cols-2 gap-8">
-              {approaches.map((approach, index) => (
+              {approaches.map((approach, index) => {
+                const glowColor = glowColors[index % glowColors.length];
+                return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                 >
-                  <CursorCard className="h-full rounded-2xl">
-                    <div className="bg-[#0a0a0a] rounded-2xl p-8 h-full">
-                      <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl inline-flex">
-                        <approach.icon className="h-8 w-8 text-[#34bb92]" />
+                  <CursorCard 
+                    className="h-full rounded-2xl"
+                    glowColor={glowColor}
+                    borderColor={glowColor}
+                    glowIntensity={500}
+                  >
+                    <div className="relative rounded-2xl p-8 h-full bg-black/[0.7] border border-white/[0.12]">
+                      {/* Glossy overlay effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                      
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl inline-flex">
+                          <approach.icon className="h-8 w-8 text-[#34bb92]" />
+                        </div>
+                        <h3 className="text-lg font-bold mb-4">
+                          {approach.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm text-justify leading-relaxed">
+                          {approach.description}
+                        </p>
                       </div>
-                      <h3 className="text-lg font-bold mb-4">
-                        {approach.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm text-justify leading-relaxed">
-                        {approach.description}
-                      </p>
                     </div>
                   </CursorCard>
                 </motion.div>
-              ))}
+              )})}
             </CursorCardsContainer>
           </motion.div>
 

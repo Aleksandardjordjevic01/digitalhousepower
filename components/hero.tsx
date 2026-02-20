@@ -59,10 +59,10 @@ function ElegantShape({
                         "absolute inset-0 rounded-full",
                         "bg-gradient-to-r to-transparent",
                         gradient,
-                        "backdrop-blur-[2px] border-2 border-white/[0.15]",
-                        "shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]",
+                        "backdrop-blur-[2px] border-2 border-white/[0.3]",
+                        "shadow-[0_8px_32px_0_rgba(255,255,255,0.25)]",
                         "after:absolute after:inset-0 after:rounded-full",
-                        "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]"
+                        "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.35),transparent_70%)]"
                     )}
                 />
             </motion.div>
@@ -102,7 +102,7 @@ export function HeroGeometric({
                     width={600}
                     height={140}
                     rotate={12}
-                    gradient="from-[#34bb92]/[0.15]"
+                    gradient="from-[#6536a1]/[0.3]"
                     className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
                 />
 
@@ -111,7 +111,7 @@ export function HeroGeometric({
                     width={500}
                     height={120}
                     rotate={-15}
-                    gradient="from-[#34bb92]/[0.12]"
+                    gradient="from-[#3f97e7]/[0.28]"
                     className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
                 />
 
@@ -120,7 +120,7 @@ export function HeroGeometric({
                     width={300}
                     height={80}
                     rotate={-8}
-                    gradient="from-[#34bb92]/[0.15]"
+                    gradient="from-[#59dbe9]/[0.3]"
                     className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
                 />
 
@@ -129,7 +129,7 @@ export function HeroGeometric({
                     width={200}
                     height={60}
                     rotate={20}
-                    gradient="from-[#34bb92]/[0.1]"
+                    gradient="from-[#fddf60]/[0.28]"
                     className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
                 />
 
@@ -138,7 +138,7 @@ export function HeroGeometric({
                     width={150}
                     height={40}
                     rotate={-25}
-                    gradient="from-[#34bb92]/[0.15]"
+                    gradient="from-[#ffbb01]/[0.3]"
                     className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
                 />
             </div>
@@ -185,8 +185,8 @@ export function HeroGeometric({
                         initial="hidden"
                         animate="visible"
                     >
-                        <p className="text-base sm:text-lg md:text-base text-white/80 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-                            Our creative ideas combined with the power of Webflow give your website a unique feel. Your vision, our innovation!
+                        <p className="text-base sm:text-lg md:text-base text-white/80 mb-8 leading-relaxed font-light tracking-wide max-w-3xl mx-auto px-4">
+                            We design, implement and maintain secure and scalable IT infrastructure, managed server environments and SLA-based support services built for real operational needs.
                         </p>
                     </motion.div>
                 </div>

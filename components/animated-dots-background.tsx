@@ -27,9 +27,19 @@ export function AnimatedDotsBackground() {
     y: null,
   });
 
+  const COLORS = [
+    { r: 101, g: 54, b: 161 },   // #6536a1
+    { r: 63, g: 151, b: 231 },   // #3f97e7
+    { r: 89, g: 219, b: 233 },   // #59dbe9
+    { r: 33, g: 220, b: 219 },   // #21dcdb
+    { r: 124, g: 248, b: 238 },  // #7cf8ee
+    { r: 253, g: 223, b: 96 },   // #fddf60
+    { r: 255, g: 187, b: 1 },    // #ffbb01
+  ];
+
   const DOT_SPACING = 25;
-  const BASE_OPACITY_MIN = 0.4;
-  const BASE_OPACITY_MAX = 0.5;
+  const BASE_OPACITY_MIN = 0.65;
+  const BASE_OPACITY_MAX = 0.85;
   const BASE_RADIUS = 1;
   const INTERACTION_RADIUS = 150;
   const INTERACTION_RADIUS_SQ = INTERACTION_RADIUS * INTERACTION_RADIUS;
@@ -76,10 +86,11 @@ export function AnimatedDotsBackground() {
         const baseOpacity =
           Math.random() * (BASE_OPACITY_MAX - BASE_OPACITY_MIN) +
           BASE_OPACITY_MIN;
+        const randomColor = COLORS[Math.floor(Math.random() * COLORS.length)];
         newDots.push({
           x,
           y,
-          baseColor: `rgba(52, 187, 146, ${BASE_OPACITY_MAX})`,
+          baseColor: `rgba(${randomColor.r}, ${randomColor.g}, ${randomColor.b}, ${BASE_OPACITY_MAX})`,
           targetOpacity: baseOpacity,
           currentOpacity: baseOpacity,
           opacitySpeed: Math.random() * 0.005 + 0.002,
@@ -242,7 +253,7 @@ export function AnimatedDotsBackground() {
     <>
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-80"
+        className="absolute inset-0 z-0 pointer-events-none opacity-100"
       />
       <div
         className="absolute inset-0 z-1 pointer-events-none"

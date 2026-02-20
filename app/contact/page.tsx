@@ -6,8 +6,10 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
+import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 
 export default function ContactPage() {
+  const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -114,9 +116,21 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 flex flex-col"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <CursorCard
+                className="h-full rounded-2xl"
+                glowColor={glowColors[0]}
+                borderColor={glowColors[0]}
+                glowIntensity={500}
+              >
+                <div className="relative rounded-2xl p-12 flex flex-col bg-black/[0.7]">
+                  {/* Glossy overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
                     htmlFor="firstName"
@@ -221,7 +235,10 @@ export default function ContactPage() {
                 >
                   Send
                 </Button>
-              </form>
+                    </form>
+                  </div>
+                </div>
+              </CursorCard>
             </motion.div>
 
             {/* Contact Info */}
@@ -259,44 +276,76 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-6">
-                {contactInfo.map((item, index) => (
-                  <motion.a
+                {contactInfo.map((item, index) => {
+                  const glowColor = glowColors[(index + 1) % glowColors.length];
+                  return (
+                  <motion.div
                     key={index}
-                    href={item.href}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    className="flex items-start gap-4 p-4 bg-[#0a0a0a] border border-white/10 rounded-xl hover:border-[#34bb92]/30 transition-colors group"
                   >
-                    <div className="p-3 bg-[#34bb92]/10 rounded-lg group-hover:bg-[#34bb92]/20 transition-colors">
-                      <item.icon className="h-5 w-5 text-[#34bb92]" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-400 mb-1">{item.label}</p>
-                      <p className="font-medium">{item.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
+                    <CursorCard
+                      className="rounded-xl"
+                      glowColor={glowColor}
+                      borderColor={glowColor}
+                      glowIntensity={500}
+                    >
+                      <a
+                        href={item.href}
+                        className="relative flex items-start gap-4 p-4 bg-black/[0.7] rounded-xl hover:border-[#34bb92]/30 transition-colors group block"
+                      >
+                        {/* Glossy overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-xl" />
+                        <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-xl" />
+                        
+                        {/* Content */}
+                        <div className="relative z-10 p-3 bg-[#34bb92]/10 rounded-lg group-hover:bg-[#34bb92]/20 transition-colors">
+                          <item.icon className="h-5 w-5 text-[#34bb92]" />
+                        </div>
+                        <div className="relative z-10">
+                          <p className="text-sm text-gray-400 mb-1">{item.label}</p>
+                          <p className="font-medium">{item.value}</p>
+                        </div>
+                      </a>
+                    </CursorCard>
+                  </motion.div>
+                  );
+                })}
               </div>
 
               {/* Office Hours */}
-              <div className="bg-[#0a0a0a] border border-white/10 rounded-xl p-6">
-                <h3 className="text-lg font-semibold mb-4">Office Hours</h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Monday - Friday</span>
-                    <span className="font-medium">9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Saturday</span>
-                    <span className="font-medium">10:00 AM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Sunday</span>
-                    <span className="font-medium">Closed</span>
+              <CursorCard
+                className="rounded-xl"
+                glowColor={glowColors[4]}
+                borderColor={glowColors[4]}
+                glowIntensity={500}
+              >
+                <div className="relative bg-black/[0.7] rounded-xl p-6">
+                  {/* Glossy overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-xl" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-lg font-semibold mb-4">Office Hours</h3>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Monday - Friday</span>
+                        <span className="font-medium">9:00 AM - 5:00 PM</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Saturday</span>
+                        <span className="font-medium">10:00 AM - 2:00 PM</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Sunday</span>
+                        <span className="font-medium">Closed</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </CursorCard>
             </motion.div>
           </div>
 
@@ -307,8 +356,18 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-12"
           >
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden">
-              <div className="p-6 border-b border-white/10">
+            <CursorCard
+              className="rounded-2xl"
+              glowColor={glowColors[5]}
+              borderColor={glowColors[5]}
+              glowIntensity={500}
+            >
+              <div className="relative bg-black/[0.7] rounded-2xl overflow-hidden">
+                {/* Glossy overlay effect on header only */}
+                <div className="absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
+                <div className="absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
+                
+                <div className="relative z-10 p-6 border-b border-white/10">
                 <h2 className="text-2xl font-bold">Our Location</h2>
                 <p className="text-gray-400 mt-2">
                   Visit us at our office in the heart of Belgrade
@@ -319,14 +378,15 @@ export default function ContactPage() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.1234567890!2d20.4489!3d44.8178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa3d7b6f5c5%3A0x7f32c1c7e3f6b5d4!2sKneza%20Mihaila%203%2C%20Beograd!5e0!3m2!1sen!2srs!4v1234567890123!5m2!1sen!2srs"
                   width="100%"
                   height="100%"
-                  style={{ border: 0 }}
+                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="absolute inset-0"
                 />
               </div>
-            </div>
+              </div>
+            </CursorCard>
           </motion.div>
         </div>
       </section>

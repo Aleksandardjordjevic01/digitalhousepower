@@ -20,9 +20,9 @@ export default function Home() {
   return (
     <main>
       <HeroGeometric 
-        badge="DigitalHousePower"
-        title1="Your brand's digital content"
-        title2="a partner built for growth"
+        badge="SECURE & SCALABLE IT SYSTEMS"
+        title1="IT Infrastructure and Digital Solutions"
+        title2="for Modern Business"
       />
       <section className="w-full py-12 bg-[#030303]">
         <div className="container mx-auto px-4">

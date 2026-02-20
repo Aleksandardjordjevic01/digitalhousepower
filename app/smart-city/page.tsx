@@ -128,6 +128,16 @@ export default function SmartCityPage() {
     },
   ];
 
+  const glowColors = [
+    "#6536a1", // purple
+    "#3f97e7", // blue
+    "#59dbe9", // light blue
+    "#21dcdb", // cyan
+    "#7cf8ee", // light cyan
+    "#fddf60", // yellow
+    "#ffbb01", // orange
+  ];
+
   return (
     <div className="min-h-screen bg-[#030303] text-foreground relative overflow-hidden">
       <AnimatedDotsBackground />
@@ -166,69 +176,87 @@ export default function SmartCityPage() {
           </motion.div>
 
           {/* Main Solutions Cards */}
-          <div className="grid md:grid-cols-3 gap-8 mb-24">
-            {mainSolutions.map((solution, index) => (
+          <CursorCardsContainer className="grid md:grid-cols-3 gap-8 mb-24">
+            {mainSolutions.map((solution, index) => {
+              const glowColor = glowColors[index % glowColors.length];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col"
+                className="flex"
               >
-                {/* Colored Header */}
-                <div
-                  className={`h-48 flex items-center justify-center bg-gradient-to-br ${solution.color} relative`}
+                <CursorCard 
+                  className="h-full rounded-2xl w-full"
+                  glowColor={glowColor}
+                  borderColor={glowColor}
+                  glowIntensity={500}
                 >
-                  <Image
-                    src={solution.image}
-                    alt={solution.title}
-                    width={200}
-                    height={200}
-                    className="object-contain p-4"
-                  />
-                </div>
+                  <div className="relative rounded-2xl overflow-hidden bg-black/[0.7] border border-white/[0.12] flex flex-col h-full">
+                    {/* Glossy overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col h-full">
+                      {/* Colored Header */}
+                      <div
+                        className={`h-48 flex items-center justify-center bg-gradient-to-br ${solution.color} relative`}
+                      >
+                        <Image
+                          src={solution.image}
+                          alt={solution.title}
+                          width={200}
+                          height={200}
+                          className="object-contain p-4"
+                        />
+                      </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-lg font-bold mb-3 text-center">
-                    {solution.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs mb-4 text-center italic">
-                    {solution.description}
-                  </p>
-                  <p className="text-gray-400 text-xs mb-6 text-justify leading-relaxed">
-                    {solution.detailedDescription}
-                  </p>
+                      {/* Content */}
+                      <div className="p-6 flex flex-col flex-1">
+                        <h3 className="text-lg font-bold mb-3 text-center">
+                          {solution.title}
+                        </h3>
+                        <p className="text-gray-400 text-xs mb-4 text-center italic">
+                          {solution.description}
+                        </p>
+                        <p className="text-gray-400 text-xs mb-6 text-justify leading-relaxed">
+                          {solution.detailedDescription}
+                        </p>
 
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold mb-3 text-gray-300">
-                      Key service areas:
-                    </h4>
-                    <ul className="space-y-2">
-                      {solution.keyServiceAreas.map((area, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2 text-xs text-gray-400"
-                        >
-                          <Check className="h-4 w-4 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                          <span>{area}</span>
-                        </li>
-                      ))}
-                    </ul>
+                        <div className="mb-6">
+                          <h4 className="text-sm font-semibold mb-3 text-gray-300">
+                            Key service areas:
+                          </h4>
+                          <ul className="space-y-2">
+                            {solution.keyServiceAreas.map((area, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-2 text-xs text-gray-400"
+                              >
+                                <Check className="h-4 w-4 text-[#34bb92] mt-0.5 flex-shrink-0" />
+                                <span>{area}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="pt-4 border-t border-white/10 mt-auto">
+                          <h4 className="text-sm font-semibold mb-2 text-gray-300">
+                            Value delivered:
+                          </h4>
+                          <p className="text-xs text-gray-400 italic">
+                            {solution.valueDelivered}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <div className="pt-4 border-t border-white/10 mt-auto">
-                    <h4 className="text-sm font-semibold mb-2 text-gray-300">
-                      Value delivered:
-                    </h4>
-                    <p className="text-xs text-gray-400 italic">
-                      {solution.valueDelivered}
-                    </p>
-                  </div>
-                </div>
+                </CursorCard>
               </motion.div>
-            ))}
-          </div>
+            )})}
+          </CursorCardsContainer>
 
           {/* How The Systems Work Together */}
           <motion.div
@@ -246,23 +274,37 @@ export default function SmartCityPage() {
             </p>
 
             <CursorCardsContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {systemsIntegration.map((item, index) => (
+              {systemsIntegration.map((item, index) => {
+                const glowColor = glowColors[index % glowColors.length];
+                return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                 >
-                  <CursorCard className="h-full rounded-2xl">
-                    <div className="bg-[#0a0a0a] rounded-2xl p-6 h-full flex flex-col items-center text-center">
-                      <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl">
-                        <item.icon className="h-12 w-12 text-[#34bb92]" />
+                  <CursorCard 
+                    className="h-full rounded-2xl"
+                    glowColor={glowColor}
+                    borderColor={glowColor}
+                    glowIntensity={500}
+                  >
+                    <div className="relative rounded-2xl p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
+                      {/* Glossy overlay effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                      
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl w-fit mx-auto">
+                          <item.icon className="h-12 w-12 text-[#34bb92]" />
+                        </div>
+                        <h3 className="text-sm font-semibold">{item.title}</h3>
                       </div>
-                      <h3 className="text-sm font-semibold">{item.title}</h3>
                     </div>
                   </CursorCard>
                 </motion.div>
-              ))}
+              )})}
             </CursorCardsContainer>
 
             <p className="text-gray-400 text-sm text-center mt-12 max-w-3xl mx-auto">
@@ -287,23 +329,37 @@ export default function SmartCityPage() {
             </p>
 
             <CursorCardsContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {ourRole.map((item, index) => (
+              {ourRole.map((item, index) => {
+                const glowColor = glowColors[(index + 4) % glowColors.length];
+                return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
                 >
-                  <CursorCard className="h-full rounded-2xl">
-                    <div className="bg-[#0a0a0a] rounded-2xl p-6 h-full flex flex-col items-center text-center">
-                      <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl">
-                        <item.icon className="h-12 w-12 text-[#34bb92]" />
+                  <CursorCard 
+                    className="h-full rounded-2xl"
+                    glowColor={glowColor}
+                    borderColor={glowColor}
+                    glowIntensity={500}
+                  >
+                    <div className="relative rounded-2xl p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
+                      {/* Glossy overlay effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                      
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl w-fit mx-auto">
+                          <item.icon className="h-12 w-12 text-[#34bb92]" />
+                        </div>
+                        <h3 className="text-sm font-semibold">{item.title}</h3>
                       </div>
-                      <h3 className="text-sm font-semibold">{item.title}</h3>
                     </div>
                   </CursorCard>
                 </motion.div>
-              ))}
+              )})}
             </CursorCardsContainer>
 
             <p className="text-gray-400 text-center text-sm mt-12 max-w-3xl mx-auto">

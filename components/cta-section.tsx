@@ -22,7 +22,7 @@ function FloatingPaths({ position }: { position: number }) {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
       <svg
-        className="w-full h-full text-[#8069c2]"
+        className="w-full h-full text-[#ffbb01]"
         viewBox="0 0 696 316"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
@@ -79,8 +79,8 @@ export function CTASection({
     <section className={cn("pb-16 md:pb-24 bg-[#030303]", className)}>
       <CursorCardsContainer className="mx-auto max-w-[1300px] px-8">
         <CursorCard 
-          borderColor="#34bb92"
-          glowColor="#34bb92"
+          borderColor="#6536a1"
+          glowColor="#6536a1"
           glowIntensity={600}
           className="rounded-3xl overflow-visible relative"
         >
@@ -88,7 +88,7 @@ export function CTASection({
             {/* Animated Edge Glow - all sides including top */}
             {withGlow && (
               <div className="pointer-events-none absolute inset-0 rounded-2xl animate-glow-pulse delay-700">
-                <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_120px_rgba(52,187,146,0.6),inset_0_0_80px_rgba(52,187,146,0.5),inset_0_0_40px_rgba(52,187,146,0.4)]" />
+                <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_120px_rgba(101,54,161,0.6),inset_0_0_80px_rgba(101,54,161,0.5),inset_0_0_40px_rgba(101,54,161,0.4)]" />
               </div>
             )}
             

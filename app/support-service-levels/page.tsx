@@ -3,10 +3,16 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Check } from "lucide-react";
 
 export default function SupportServiceLevelsPage() {
+  const glowColors = [
+    "#6536a1", // purple
+    "#3f97e7", // blue
+    "#59dbe9", // light blue
+  ];
+
   const supportPackages = [
     {
       title: "BASIC REMOTE SUPPORT",
@@ -69,8 +75,10 @@ export default function SupportServiceLevelsPage() {
           </motion.div>
 
           {/* Support Packages Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16 md:auto-rows-fr">
-            {supportPackages.map((pkg, index) => (
+          <CursorCardsContainer className="grid md:grid-cols-3 gap-8 mb-16 md:auto-rows-fr">
+            {supportPackages.map((pkg, index) => {
+              const glowColor = glowColors[index % glowColors.length];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -78,47 +86,63 @@ export default function SupportServiceLevelsPage() {
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 className="flex"
               >
-                <Card className="flex flex-col gap-3 overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a] p-4 shadow-lg w-full">
-                  <CardHeader className="p-0 shrink-0">
-                    <div
-                      className={`bg-gradient-to-r ${pkg.gradient} rounded-2xl p-6`}
-                    >
-                      <h3 className="text-base py-6 font-bold text-black text-center">
-                        {pkg.title}
-                      </h3>
-                    </div>
-                  </CardHeader>
+                <CursorCard 
+                  className="h-full rounded-3xl w-full"
+                  glowColor={glowColor}
+                  borderColor={glowColor}
+                  glowIntensity={500}
+                >
+                  <div className="relative rounded-3xl overflow-hidden bg-black/[0.7] border border-white/[0.12] flex flex-col gap-3 p-4 shadow-lg w-full h-full">
+                    {/* Glossy overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col gap-3 h-full">
+                      {/* Header */}
+                      <div className="shrink-0">
+                        <div
+                          className={`bg-gradient-to-r ${pkg.gradient} rounded-2xl p-6`}
+                        >
+                          <h3 className="text-base py-6 font-bold text-black text-center">
+                            {pkg.title}
+                          </h3>
+                        </div>
+                      </div>
 
-                  <CardContent className="flex-grow p-3 flex flex-col min-h-0">
-                    {/* Package Description */}
-                    <div className="min-h-[120px] mb-4">
-                      <p className="text-gray-300 text-xs text-justify leading-relaxed">
-                        {pkg.description}
-                      </p>
-                    </div>
+                      {/* Content */}
+                      <div className="flex-grow p-3 flex flex-col min-h-0">
+                        {/* Package Description */}
+                        <div className="min-h-[120px] mb-4">
+                          <p className="text-gray-300 text-xs text-justify leading-relaxed">
+                            {pkg.description}
+                          </p>
+                        </div>
 
-                    {/* Includes Section */}
-                    <div>
-                      <h4 className="text-sm font-semibold mb-4 text-white">
-                        Includes:
-                      </h4>
-                      <ul className="space-y-3">
-                        {pkg.includes.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3 text-gray-300"
-                          >
-                            <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                        {/* Includes Section */}
+                        <div>
+                          <h4 className="text-sm font-semibold mb-4 text-white">
+                            Includes:
+                          </h4>
+                          <ul className="space-y-3">
+                            {pkg.includes.map((item, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-3 text-gray-300"
+                              >
+                                <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
+                                <span className="text-sm">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </CursorCard>
               </motion.div>
-            ))}
-          </div>
+            )})}
+          </CursorCardsContainer>
         </div>
       </section>
     </div>

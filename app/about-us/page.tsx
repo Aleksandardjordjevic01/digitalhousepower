@@ -575,7 +575,7 @@ export default function AboutUsPage() {
       {/* CTA Section */}
       <CTASection 
         title="Send us an email to discuss a new project"
-        description="We will be happy to schedule a meeting, discuss your requirements, and provide structured guidance on the next steps."
+        description="We will be happy to request consultation, discuss your requirements, and provide structured guidance on the next steps."
         action={{
           text: "Contact us",
           href: "/contact"

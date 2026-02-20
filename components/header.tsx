@@ -15,32 +15,32 @@ export function Header() {
 
 	const links = [
 		{
+			label: 'About us',
+			href: '/about-us',
+		},
+		{
 			label: 'Services',
 			href: '/services',
-		},
-		{
-			label: 'Smart city',
-			href: '/smart-city',
-		},
-		{
-			label: 'Server packages',
-			href: '/server-packages',
-		},
-		{
-			label: 'Outsourcing',
-			href: '/outsourcing',
 		},
 		{
 			label: 'Support Service Levels',
 			href: '/support-service-levels',
 		},
 		{
-			label: 'Career',
-			href: '/career',
+			label: 'Server packages',
+			href: '/server-packages',
 		},
 		{
-			label: 'About us',
-			href: '/about-us',
+			label: 'Smart city',
+			href: '/smart-city',
+		},
+		{
+			label: 'Outsourcing',
+			href: '/outsourcing',
+		},
+		{
+			label: 'Career',
+			href: '/career',
 		},
 	];
 
@@ -124,7 +124,7 @@ export function Header() {
 				</div>
 				<div className="absolute right-6 hidden md:block">
 					<Button asChild className='text-black px-6 py-6'>
-						<Link href="/contact">Schedule a meeting</Link>
+						<Link href="/contact">Request Consultation</Link>
 					</Button>
 				</div>
 				<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden absolute right-6">
@@ -183,7 +183,7 @@ export function Header() {
 					</div>
 					<div className="flex flex-col gap-2">
 						<Button asChild className="w-full text-black">
-							<Link href="/contact">Schedule a meeting</Link>
+							<Link href="/contact">Request Consultation</Link>
 						</Button>
 					</div>
 				</div>

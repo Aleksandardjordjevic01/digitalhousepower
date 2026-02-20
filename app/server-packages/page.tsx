@@ -5,9 +5,15 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
+import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Check, Network, Headphones, Shield } from "lucide-react";
 
 export default function ServerPackagesPage() {
+  const glowColors = [
+    "#6536a1", // purple
+    "#3f97e7", // blue
+    "#59dbe9", // light blue
+  ];
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -38,43 +44,34 @@ export default function ServerPackagesPage() {
 
   const packages = [
     {
-      title: "DHP",
-      subtitle: "REDUNDANCY",
+      title: "REDUNDANCY",
       icon: Network,
       features: [
         "Multi-homed network",
         "Direct connection with SBB, Giganet, MTEL HL",
         "Advanced DDoS protection",
       ],
-      accentColor: "bg-gray-700/50",
-      buttonColor: "bg-white text-black hover:bg-gray-100",
-      headerTextColor: "text-white",
+      gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "DHP",
-      subtitle: "24/7 TECHNICAL SUPPORT",
+      title: "24/7 TECHNICAL SUPPORT",
       icon: Headphones,
       features: [
         "Access to support through all channels (phone, chat, ticket)",
         "Server maintenance and monitoring to your needs",
         "Qualified and certified system engineers",
       ],
-      accentColor: "bg-[#34bb92]",
-      buttonColor: "bg-[#34bb92] text-black hover:bg-[#2da578]",
-      headerTextColor: "text-black",
+      gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "DHP",
-      subtitle: "FULL REDUNDANCY",
+      title: "FULL REDUNDANCY",
       icon: Shield,
       features: [
         "Fully redundant network and power environment",
         "Data redundancy tailored to your needs",
         "On-site and fastlane",
       ],
-      accentColor: "bg-gray-700/50",
-      buttonColor: "bg-white text-black hover:bg-gray-100",
-      headerTextColor: "text-white",
+      gradient: "from-[#34bb92] to-[#2da578]",
     },
   ];
 
@@ -113,54 +110,85 @@ export default function ServerPackagesPage() {
           </motion.div>
 
           {/* Packages Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-10">
-            {packages.map((pkg, index) => (
+          <CursorCardsContainer className="grid md:grid-cols-3 gap-8 mb-10 md:auto-rows-fr">
+            {packages.map((pkg, index) => {
+              const glowColor = glowColors[index % glowColors.length];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden flex flex-col"
+                className="flex"
               >
-                {/* Header */}
-                <div className={`p-6 ${pkg.accentColor}`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <pkg.icon className={`h-6 w-6 ${pkg.headerTextColor}`} />
-                    <p className={`text-sm font-semibold ${pkg.headerTextColor}`}>{pkg.title}</p>
+                <CursorCard 
+                  className="h-full rounded-3xl w-full"
+                  glowColor={glowColor}
+                  borderColor={glowColor}
+                  glowIntensity={500}
+                >
+                  <div className="relative rounded-3xl overflow-hidden bg-black/[0.7] border border-white/[0.12] flex flex-col gap-3 p-4 shadow-lg w-full h-full">
+                    {/* Glossy overlay effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
+                    
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col gap-3 h-full">
+                      {/* Header */}
+                      <div className="shrink-0">
+                        <div
+                          className={`bg-gradient-to-r ${pkg.gradient} rounded-2xl p-6`}
+                        >
+                          <div className="flex items-center gap-3 mb-3">
+                            <pkg.icon className="h-6 w-6 text-black" />
+                            <p className="text-sm font-semibold text-black">DHP</p>
+                          </div>
+                          <h3 className="text-base font-bold text-black">
+                            {pkg.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-grow p-3 flex flex-col min-h-0">
+                        {/* Features Section */}
+                        <div className="flex-grow">
+                          <h4 className="text-sm font-semibold mb-4 text-white">
+                            Includes:
+                          </h4>
+                          <ul className="space-y-3">
+                            {pkg.features.map((feature, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-3 text-gray-300"
+                              >
+                                <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
+                                <span className="text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Button */}
+                        <div className="mt-6">
+                          <Button
+                            className="w-full bg-[#34bb92] text-black hover:bg-[#2da578] font-semibold"
+                            onClick={() => {
+                              document
+                                .getElementById("contact-form")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                          >
+                            FILL OUT THE FORM
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className={`text-xl font-bold ${pkg.headerTextColor}`}>
-                    {pkg.subtitle}
-                  </h3>
-                </div>
-
-                {/* Features */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <ul className="space-y-3 mb-6 flex-grow">
-                    {pkg.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-sm text-gray-300"
-                      >
-                        <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button
-                    className={`w-full ${pkg.buttonColor} font-semibold mt-auto`}
-                    onClick={() => {
-                      document
-                        .getElementById("contact-form")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    FILL OUT THE FORM
-                  </Button>
-                </div>
+                </CursorCard>
               </motion.div>
-            ))}
-          </div>
+            )})}
+          </CursorCardsContainer>
 
           {/* Contact Form Section */}
           <motion.div
