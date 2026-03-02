@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
 import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Check, Network, Headphones, Shield } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 export default function ServerPackagesPage() {
+  const { t } = useLanguage();
+  
   const glowColors = [
     "#6536a1", // purple
     "#3f97e7", // blue
@@ -44,32 +47,32 @@ export default function ServerPackagesPage() {
 
   const packages = [
     {
-      title: "REDUNDANCY",
+      titleKey: "serverPackagesPage.redundancy.title",
       icon: Network,
-      features: [
-        "Multi-homed network",
-        "Direct connection with SBB, Giganet, MTEL HL",
-        "Advanced DDoS protection",
+      featureKeys: [
+        "serverPackagesPage.redundancy.feature1",
+        "serverPackagesPage.redundancy.feature2",
+        "serverPackagesPage.redundancy.feature3",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "24/7 TECHNICAL SUPPORT",
+      titleKey: "serverPackagesPage.support247.title",
       icon: Headphones,
-      features: [
-        "Access to support through all channels (phone, chat, ticket)",
-        "Server maintenance and monitoring to your needs",
-        "Qualified and certified system engineers",
+      featureKeys: [
+        "serverPackagesPage.support247.feature1",
+        "serverPackagesPage.support247.feature2",
+        "serverPackagesPage.support247.feature3",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "FULL REDUNDANCY",
+      titleKey: "serverPackagesPage.fullRedundancy.title",
       icon: Shield,
-      features: [
-        "Fully redundant network and power environment",
-        "Data redundancy tailored to your needs",
-        "On-site and fastlane",
+      featureKeys: [
+        "serverPackagesPage.fullRedundancy.feature1",
+        "serverPackagesPage.fullRedundancy.feature2",
+        "serverPackagesPage.fullRedundancy.feature3",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
@@ -88,9 +91,9 @@ export default function ServerPackagesPage() {
             transition={{ duration: 0.6 }}
             className="text-start mb-4"
           >
-            <Badge className="mb-4 text-base text-black">DigitalHousePower</Badge>
+            <Badge className="mb-4 text-base text-black">{t("serverPackagesPage.badge")}</Badge>
             <h1 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="text-[#34bb92]">Server packages</span>
+              <span className="text-[#77debb]">{t("serverPackagesPage.title")}</span>
             </h1>
           </motion.div>
 
@@ -101,11 +104,11 @@ export default function ServerPackagesPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-10 text-start"
           >
-            <h2 className="text-xl md:text-2xl font-bold mb-4">
-              Dedicated servers with maintenance tailored to your needs
+            <h2 className="text-xl md:text-2xl text-start uppercase font-semibold text-gray-300 mb-4">
+              {t("serverPackagesPage.subtitle")}
             </h2>
-            <p className="text-gray-400 text-sm max-w-3xl">
-              Optimal performance with fully customized network and power support for Serbia.
+            <p className="text-sm text-white/70 max-w-4xl text-justify">
+              {t("serverPackagesPage.description")}
             </p>
           </motion.div>
 
@@ -144,7 +147,7 @@ export default function ServerPackagesPage() {
                             <p className="text-sm font-semibold text-black">DHP</p>
                           </div>
                           <h3 className="text-base font-bold text-black">
-                            {pkg.title}
+                            {t(pkg.titleKey)}
                           </h3>
                         </div>
                       </div>
@@ -154,16 +157,16 @@ export default function ServerPackagesPage() {
                         {/* Features Section */}
                         <div className="flex-grow">
                           <h4 className="text-sm font-semibold mb-4 text-white">
-                            Includes:
+                            {t("serverPackagesPage.includesLabel")}
                           </h4>
                           <ul className="space-y-3">
-                            {pkg.features.map((feature, idx) => (
+                            {pkg.featureKeys.map((featureKey, idx) => (
                               <li
                                 key={idx}
                                 className="flex items-start gap-3 text-gray-300"
                               >
                                 <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                                <span className="text-sm">{feature}</span>
+                                <span className="text-sm">{t(featureKey)}</span>
                               </li>
                             ))}
                           </ul>
@@ -179,7 +182,7 @@ export default function ServerPackagesPage() {
                                 ?.scrollIntoView({ behavior: "smooth" });
                             }}
                           >
-                            FILL OUT THE FORM
+                            {t("serverPackagesPage.fillFormButton")}
                           </Button>
                         </div>
                       </div>
@@ -200,10 +203,10 @@ export default function ServerPackagesPage() {
           >
             <div className="text-start mb-10">
               <h2 className="text-xl md:text-2xl font-bold mb-4">
-                We are ready to make everything you imagine come true, anywhere in Serbia.
+                {t("serverPackagesPage.formHeading")}
               </h2>
               <p className="text-gray-400 text-sm max-w-3xl">
-                Do not hesitate to request a personalized offer. We can provide fast set-up to meet your expectations!
+                {t("serverPackagesPage.formDescription")}
               </p>
             </div>
 
@@ -218,7 +221,7 @@ export default function ServerPackagesPage() {
                     htmlFor="firstName"
                     className="block text-sm font-medium mb-2"
                   >
-                    FIRST AND LAST NAME*
+                    {t("serverPackagesPage.form.firstName")}
                   </label>
                   <input
                     type="text"
@@ -228,7 +231,7 @@ export default function ServerPackagesPage() {
                     value={formData.firstName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter first and last name"
+                    placeholder={t("serverPackagesPage.form.firstNamePlaceholder")}
                   />
                 </div>
 
@@ -238,7 +241,7 @@ export default function ServerPackagesPage() {
                     htmlFor="companyName"
                     className="block text-sm font-medium mb-2"
                   >
-                    COMPANY NAME*
+                    {t("serverPackagesPage.form.companyName")}
                   </label>
                   <input
                     type="text"
@@ -248,7 +251,7 @@ export default function ServerPackagesPage() {
                     value={formData.companyName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter company name"
+                    placeholder={t("serverPackagesPage.form.companyNamePlaceholder")}
                   />
                 </div>
 
@@ -258,7 +261,7 @@ export default function ServerPackagesPage() {
                     htmlFor="websiteAddress"
                     className="block text-sm font-medium mb-2"
                   >
-                    WEBSITE ADDRESS*
+                    {t("serverPackagesPage.form.website")}
                   </label>
                   <input
                     type="url"
@@ -268,7 +271,7 @@ export default function ServerPackagesPage() {
                     value={formData.websiteAddress}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter website address"
+                    placeholder={t("serverPackagesPage.form.websitePlaceholder")}
                   />
                 </div>
 
@@ -278,7 +281,7 @@ export default function ServerPackagesPage() {
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
                   >
-                    EMAIL*
+                    {t("serverPackagesPage.form.email")}
                   </label>
                   <input
                     type="email"
@@ -288,7 +291,7 @@ export default function ServerPackagesPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter your email"
+                    placeholder={t("serverPackagesPage.form.emailPlaceholder")}
                   />
                 </div>
 
@@ -298,7 +301,7 @@ export default function ServerPackagesPage() {
                     htmlFor="contactPhone"
                     className="block text-sm font-medium mb-2"
                   >
-                    CONTACT PHONE*
+                    {t("serverPackagesPage.form.phone")}
                   </label>
                   <input
                     type="tel"
@@ -308,7 +311,7 @@ export default function ServerPackagesPage() {
                     value={formData.contactPhone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter your phone number"
+                    placeholder={t("serverPackagesPage.form.phonePlaceholder")}
                   />
                 </div>
 
@@ -318,7 +321,7 @@ export default function ServerPackagesPage() {
                     htmlFor="networkBandwidth"
                     className="block text-sm font-medium mb-2"
                   >
-                    NETWORK BANDWIDTH*
+                    {t("serverPackagesPage.form.bandwidth")}
                   </label>
                   <select
                     id="networkBandwidth"
@@ -328,11 +331,11 @@ export default function ServerPackagesPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
                   >
-                    <option value="">Select</option>
+                    <option value="">{t("serverPackagesPage.form.select")}</option>
                     <option value="100mbps">100 Mbps</option>
                     <option value="1gbps">1 Gbps</option>
                     <option value="10gbps">10 Gbps</option>
-                    <option value="custom">Custom</option>
+                    <option value="custom">{t("serverPackagesPage.form.custom")}</option>
                   </select>
                 </div>
 
@@ -342,7 +345,7 @@ export default function ServerPackagesPage() {
                     htmlFor="networkBgpSpeed"
                     className="block text-sm font-medium mb-2"
                   >
-                    NETWORK BGP SPEED*
+                    {t("serverPackagesPage.form.bgpSpeed")}
                   </label>
                   <select
                     id="networkBgpSpeed"
@@ -352,9 +355,9 @@ export default function ServerPackagesPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
                   >
-                    <option value="">Select</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option value="">{t("serverPackagesPage.form.select")}</option>
+                    <option value="yes">{t("serverPackagesPage.form.yes")}</option>
+                    <option value="no">{t("serverPackagesPage.form.no")}</option>
                   </select>
                 </div>
 
@@ -364,7 +367,7 @@ export default function ServerPackagesPage() {
                     htmlFor="dataCenterLocation"
                     className="block text-sm font-medium mb-2"
                   >
-                    DESIRED DATA CENTER LOCATION*
+                    {t("serverPackagesPage.form.location")}
                   </label>
                   <select
                     id="dataCenterLocation"
@@ -374,11 +377,11 @@ export default function ServerPackagesPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
                   >
-                    <option value="">Select</option>
-                    <option value="belgrade">Belgrade</option>
-                    <option value="novi-sad">Novi Sad</option>
-                    <option value="nis">Niš</option>
-                    <option value="other">Other</option>
+                    <option value="">{t("serverPackagesPage.form.select")}</option>
+                    <option value="belgrade">{t("serverPackagesPage.form.belgrade")}</option>
+                    <option value="novi-sad">{t("serverPackagesPage.form.noviSad")}</option>
+                    <option value="nis">{t("serverPackagesPage.form.nis")}</option>
+                    <option value="other">{t("serverPackagesPage.form.other")}</option>
                   </select>
                 </div>
 
@@ -388,7 +391,7 @@ export default function ServerPackagesPage() {
                     htmlFor="serviceDeliveryTime"
                     className="block text-sm font-medium mb-2"
                   >
-                    DESIRED SERVICE DELIVERY TIME
+                    {t("serverPackagesPage.form.deliveryTime")}
                   </label>
                   <input
                     type="text"
@@ -397,7 +400,7 @@ export default function ServerPackagesPage() {
                     value={formData.serviceDeliveryTime}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter desired service delivery time"
+                    placeholder={t("serverPackagesPage.form.deliveryTimePlaceholder")}
                   />
                 </div>
 
@@ -407,7 +410,7 @@ export default function ServerPackagesPage() {
                     htmlFor="technicalSpecification"
                     className="block text-sm font-medium mb-2"
                   >
-                    TECHNICAL SPECIFICATION DESCRIPTION*
+                    {t("serverPackagesPage.form.techSpec")}
                   </label>
                   <textarea
                     id="technicalSpecification"
@@ -417,7 +420,7 @@ export default function ServerPackagesPage() {
                     value={formData.technicalSpecification}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors resize-none"
-                    placeholder="Please share your technical requirements so we can provide the best possible solution."
+                    placeholder={t("serverPackagesPage.form.techSpecPlaceholder")}
                   />
                 </div>
               </div>
@@ -426,7 +429,7 @@ export default function ServerPackagesPage() {
                 type="submit"
                 className="w-full md:w-auto mt-6 bg-[#34bb92] text-black hover:bg-[#2da578] px-12 py-6 font-medium"
               >
-                Send
+                {t("serverPackagesPage.form.sendButton")}
               </Button>
             </form>
           </motion.div>

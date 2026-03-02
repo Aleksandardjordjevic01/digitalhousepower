@@ -11,11 +11,13 @@ import {
   EmptyHeader,
 } from "@/components/ui/empty";
 import { Glitchy404 } from "@/components/ui/glitchy-404";
+import { useLanguage } from "@/lib/language-context";
 
 const PRIMARY_ORB_HORIZONTAL_OFFSET = 40;
 const PRIMARY_ORB_VERTICAL_OFFSET = 20;
 
 export default function NotFoundPage() {
+  const { t } = useLanguage();
   return (
     <div className="w-full relative flex min-h-screen items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,rgba(52,187,146,0.1),transparent_70%)] text-foreground">
       <div
@@ -75,21 +77,21 @@ export default function NotFoundPage() {
             <Glitchy404 width={400} height={100} color="#ffffff" />
           </div>
           <EmptyDescription className="text-nowrap">
-            The page you&apos;re looking for might have been <br />
-            moved or doesn&apos;t exist.
+            {t("notFoundPage.description1")} <br />
+            {t("notFoundPage.description2")}
           </EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
           <div className="flex gap-2">
             <Button asChild>
               <Link href="/">
-                <Home className="mr-2 h-4 w-4" /> Go Home
+                <Home className="mr-2 h-4 w-4" /> {t("notFoundPage.goHome")}
               </Link>
             </Button>
 
             <Button asChild variant="outline">
               <Link href="/#services">
-                <Compass className="mr-2 h-4 w-4" /> Explore
+                <Compass className="mr-2 h-4 w-4" /> {t("notFoundPage.explore")}
               </Link>
             </Button>
           </div>

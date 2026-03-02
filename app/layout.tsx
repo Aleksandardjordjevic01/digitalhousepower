@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
+import { LanguageProvider } from "@/lib/language-context";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -18,14 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <BackToTop />
-        <Script 
-          src="//code.tidio.co/b1ggbbem1abnyct8ygmohqzfyyongwfz.js" 
-          strategy="lazyOnload"
-        />
+        <LanguageProvider>
+          <Header />
+          {children}
+          <Footer />
+          <BackToTop />
+        </LanguageProvider>
       </body>
     </html>
   );

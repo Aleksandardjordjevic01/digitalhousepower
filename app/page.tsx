@@ -1,11 +1,16 @@
+'use client';
+
 import { HeroGeometric } from "@/components/hero";
 import { LogoCloud } from "@/components/logo-cloud";
 import { ServicesSection } from "@/components/services-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import FAQs from "@/components/faq";
 import { CTASection } from "@/components/cta-section";
+import { useLanguage } from "@/lib/language-context";
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   // TODO: Add your logo files to /public/assets/logos/ folder
   // Then update these paths to use local files like: "/assets/logos/your-logo.svg"
   const logos = [
@@ -20,9 +25,11 @@ export default function Home() {
   return (
     <main>
       <HeroGeometric 
-        badge="SECURE & SCALABLE IT SYSTEMS"
-        title1="IT Infrastructure and Digital Solutions"
-        title2="for Modern Business"
+        badge={t('home.hero.badge')}
+        title1={t('home.hero.title1')}
+        title2={t('home.hero.title2')}
+        description={t('home.hero.description')}
+        secondDescription={t('home.hero.secondDescription')}
       />
       <section className="w-full py-12 bg-[#030303]">
         <div className="container mx-auto px-4">
@@ -36,10 +43,10 @@ export default function Home() {
       <TestimonialsSection />
       <FAQs />
       <CTASection 
-        title="Send us an email to discuss a new project"
-        description="We are a team of creatives excited about unique ideas, helping companies create an amazing identity by crafting top-notch UI/UX."
+        title={t('home.cta.title')}
+        description={t('home.cta.description')}
         action={{
-          text: "Contact us",
+          text: t('home.cta.button'),
           href: "#contact"
         }}
       />

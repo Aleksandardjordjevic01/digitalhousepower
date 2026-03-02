@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
 import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
-import { Check } from "lucide-react";
+import { Check, Monitor, Headphones, Users } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 export default function SupportServiceLevelsPage() {
+  const { t } = useLanguage();
+  
   const glowColors = [
     "#6536a1", // purple
     "#3f97e7", // blue
@@ -15,41 +18,41 @@ export default function SupportServiceLevelsPage() {
 
   const supportPackages = [
     {
-      title: "BASIC REMOTE SUPPORT",
-      description:
-        "Basic Remote Support is designed for organizations that need reliable remote assistance to maintain day-to-day operations. This service ensures that ongoing Support is provided remotely during agreed business hours and focuses on maintaining system functionality.",
-      includes: [
-        "Remote technical support during business hours",
-        "Basic server and system monitoring",
-        "Incident diagnostics and resolution",
-        "Configuration assistance and minor adjustments",
-        "Advisory support and operational guidance",
+      titleKey: "supportPage.basic.title",
+      descKey: "supportPage.basic.desc",
+      icon: Monitor,
+      includeKeys: [
+        "supportPage.basic.include1",
+        "supportPage.basic.include2",
+        "supportPage.basic.include3",
+        "supportPage.basic.include4",
+        "supportPage.basic.include5",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "REMOTE 24/7 TECHNICAL SUPPORT",
-      description:
-        "Remote 24/7 Technical Support is suitable for business or final entities that maintain technical or digital services and require continuous availability regardless of time or contact modality. Our immediate-reactive intervention is any time.",
-      includes: [
-        "24/7 remote technical support",
-        "Continuous architecture monitoring",
-        "Incident diagnosis and emergency response",
-        "Software installation and updates",
-        "Regular base platform and security",
+      titleKey: "supportPage.remote247.title",
+      descKey: "supportPage.remote247.desc",
+      icon: Headphones,
+      includeKeys: [
+        "supportPage.remote247.include1",
+        "supportPage.remote247.include2",
+        "supportPage.remote247.include3",
+        "supportPage.remote247.include4",
+        "supportPage.remote247.include5",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
     {
-      title: "FULL ON-SITE SUPPORT",
-      description:
-        "Full On-Site Support provides comprehensive infrastructure management with asset physical presence where needed. This service level is suitable for organizations that require maximum availability and operational control and on-site technical intervention.",
-      includes: [
-        "24/7 remote support combined with on-site intervention",
-        "Physical server and infrastructure maintenance",
-        "On-site incident resolution and system recovery",
-        "Hardware diagnostics, reconfiguration, and upgrades",
-        "Customized redundancy, backup, and disaster recovery procedures",
+      titleKey: "supportPage.fullonsite.title",
+      descKey: "supportPage.fullonsite.desc",
+      icon: Users,
+      includeKeys: [
+        "supportPage.fullonsite.include1",
+        "supportPage.fullonsite.include2",
+        "supportPage.fullonsite.include3",
+        "supportPage.fullonsite.include4",
+        "supportPage.fullonsite.include5",
       ],
       gradient: "from-[#34bb92] to-[#2da578]",
     },
@@ -68,10 +71,16 @@ export default function SupportServiceLevelsPage() {
             transition={{ duration: 0.6 }}
             className="text-start mb-16"
           >
-            <Badge className="mb-4 text-base text-black">DigitalHousePower</Badge>
-            <h1 className="text-2xl md:text-3xl font-bold mb-4">
-              Support Service Levels
+            <Badge className="mb-4 text-base text-black">{t("supportPage.badge")}</Badge>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#77debb]">
+              {t("supportPage.title")}
             </h1>
+            <p className="text-xl md:text-2xl text-start uppercase font-semibold text-gray-300 mb-4">
+              {t("supportPage.subtitle")}
+            </p>
+            <p className="text-sm text-white/70 max-w-4xl text-justify">
+              {t("supportPage.description")}
+            </p>
           </motion.div>
 
           {/* Support Packages Grid */}
@@ -104,8 +113,12 @@ export default function SupportServiceLevelsPage() {
                         <div
                           className={`bg-gradient-to-r ${pkg.gradient} rounded-2xl p-6`}
                         >
-                          <h3 className="text-base py-6 font-bold text-black text-center">
-                            {pkg.title}
+                          <div className="flex items-center gap-3 mb-3">
+                            <pkg.icon className="h-6 w-6 text-black" />
+                            <p className="text-sm font-semibold text-black">DHP</p>
+                          </div>
+                          <h3 className="text-base font-bold text-black">
+                            {t(pkg.titleKey)}
                           </h3>
                         </div>
                       </div>
@@ -115,23 +128,23 @@ export default function SupportServiceLevelsPage() {
                         {/* Package Description */}
                         <div className="min-h-[120px] mb-4">
                           <p className="text-gray-300 text-xs text-justify leading-relaxed">
-                            {pkg.description}
+                            {t(pkg.descKey)}
                           </p>
                         </div>
 
                         {/* Includes Section */}
                         <div>
                           <h4 className="text-sm font-semibold mb-4 text-white">
-                            Includes:
+                            {t("supportPage.includesLabel")}
                           </h4>
                           <ul className="space-y-3">
-                            {pkg.includes.map((item, idx) => (
+                            {pkg.includeKeys.map((includeKey, idx) => (
                               <li
                                 key={idx}
                                 className="flex items-start gap-3 text-gray-300"
                               >
                                 <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                                <span className="text-sm">{item}</span>
+                                <span className="text-sm">{t(includeKey)}</span>
                               </li>
                             ))}
                           </ul>

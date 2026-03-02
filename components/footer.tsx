@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -314,6 +315,7 @@ export type SiteConfig = typeof siteConfig;
 export const Footer = () => {
   const tablet = useMediaQuery("(max-width: 1024px)");
   const [email, setEmail] = useState("");
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -338,24 +340,25 @@ export const Footer = () => {
             </Link>
             
             <div className="w-full">
-              <h3 className="text-lg font-bold text-white mb-4">Subscribe to newsletter</h3>
+              <h3 className="text-lg font-bold text-white mb-4">{t('footer.newsletter')}</h3>
               <form onSubmit={handleSubmit} className="relative">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ENTER YOUR EMAIL"
+                  placeholder={t('footer.email.placeholder')}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 pr-12 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#34bb92] transition-colors"
                 />
                 <button
                   type="submit"
                   className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#34bb92] hover:bg-[#2da57d] rounded-md p-2 transition-colors"
+                  aria-label={t('footer.subscribe')}
                 >
                   <ChevronRightIcon className="w-5 h-5 text-white" />
                 </button>
               </form>
               <p className="text-xs text-white/70 mt-4">
-                Your information is never disclosed to third parties.
+                {t('footer.newsletterDesc')}
               </p>
             </div>
 
@@ -394,25 +397,55 @@ export const Footer = () => {
           <div className="flex flex-col sm:flex-row sm:items-start gap-10 lg:gap-16">
             {/* Company Column */}
             <div className="flex flex-col gap-y-3">
-              <h3 className="text-lg font-bold text-white mb-2">Company</h3>
+              <h3 className="text-lg font-bold text-white mb-2">{t('footer.company')}</h3>
               <ul className="flex flex-col gap-y-2">
-                {siteConfig.company.links.map((link) => (
-                  <li key={link.id}>
-                    <Link
-                      href={link.url}
-                      className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/about-us"
+                    className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
+                  >
+                    {t('footer.aboutUs')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/server-packages"
+                    className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
+                  >
+                    {t('footer.serverPackages')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/outsourcing"
+                    className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
+                  >
+                    {t('footer.outsourcing')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/career"
+                    className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
+                  >
+                    {t('footer.career')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
+                  >
+                    {t('nav.contact')}
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Contact Column */}
             <div className="flex flex-col gap-y-6">
               <div className="flex flex-col gap-y-3">
-                <h3 className="text-lg font-bold text-white mb-2">Contact us</h3>
+                <h3 className="text-lg font-bold text-white mb-2">{t('footer.contact')}</h3>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
                   className="text-sm text-gray-400 hover:text-[#34bb92] transition-colors"
@@ -460,7 +493,7 @@ export const Footer = () => {
       </div>
       <div className="container mx-auto max-w-[1300px] px-4 py-6 border-t border-white/10">
         <p className="text-center text-sm text-gray-500">
-          © 2026 DigitalHousePower. All rights reserved.
+          {t('footer.rights')}
         </p>
       </div>
     </footer>

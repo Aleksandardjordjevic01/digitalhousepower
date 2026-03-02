@@ -7,8 +7,10 @@ import { AnimatedDotsBackground } from "@/components/animated-dots-background";
 import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Mail, MapPin, Hash, FileText, Phone } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/lib/language-context";
 
 export default function CareerPage() {
+  const { t } = useLanguage();
   const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
   const [formData, setFormData] = useState({
     fullName: "",
@@ -58,8 +60,8 @@ export default function CareerPage() {
             transition={{ duration: 0.6 }}
             className="text-start mb-12"
           >
-            <Badge className="mb-4 text-base text-black">DigitalHousePower</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold">Career</h1>
+            <Badge className="mb-4 text-base text-black">{t("careerPage.badge")}</Badge>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#77debb]">{t("careerPage.title")}</h1>
           </motion.div>
 
           <div className="grid gap-8 mb-12" style={{gridTemplateColumns: '1fr 450px'}}>
@@ -71,31 +73,16 @@ export default function CareerPage() {
               className="space-y-6 text-sm text-gray-300 text-justify leading-relaxed"
             >
               <p>
-                If you are a motivated professional, a team-oriented individual,
-                or someone with a strong base and the power of to contribute, we
-                are always open (.) canvassing. We value initiative,
-                responsibility, and the willingness to learn. Selecting the
-                competence development in the IT sector—we recognize IT
-                enthusiasts who would use real skills to contribute competent
-                work to an IT organization.
+                {t("careerPage.intro1")}
               </p>
               <p>
-                At DigitalHousePower, we aim to build long-term professional
-                relationships — whether through engagement, collaboration, or
-                project-based cooperation. We encourage people who think
-                analytically and organically, and strive for architectural and
-                procedural improvement of approaches of processes when needed.
+                {t("careerPage.intro2")}
               </p>
               <p>
-                By fostering teamwork, innovation, and mutual support, we create
-                a professional environment where individuals can grow,
-                co-evolve, meaningfully, and take part in skilled projects.
+                {t("careerPage.intro3")}
               </p>
               <p className="text-gray-400 text-xs mt-8">
-                Your information will be securely stored in our candidate
-                database, and we may contact you when appropriate roles align
-                your skills, experience, or that align with your skills,
-                experience, or career expectations.
+                {t("careerPage.intro4")}
               </p>
             </motion.div>
 
@@ -118,16 +105,16 @@ export default function CareerPage() {
                   
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="text-lg font-bold mb-6">We are available:</h3>
+                    <h3 className="text-lg font-bold mb-6">{t("careerPage.contactTitle")}</h3>
               <div className="space-y-4 text-sm">
                 <p className="text-gray-400">
-                  weekdays from <span className="text-[#34bb92]">8 AM to 6 PM</span>
+                  {t("careerPage.contactTime")} <span className="text-[#34bb92]">{t("careerPage.contactTime2")}</span>
                 </p>
 
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-[#34bb92] flex-shrink-0" />
                   <p className="text-xs">
-                    <span className="text-gray-400">Emails:</span>{" "}
+                    <span className="text-gray-400">{t("careerPage.emailLabel")}</span>{" "}
                     <a
                       href="mailto:office@digitalhousepower.com"
                       className="text-[#34bb92] hover:underline break-all"
@@ -140,7 +127,7 @@ export default function CareerPage() {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-gray-400 text-xs mb-1">Address</p>
+                    <p className="text-gray-400 text-xs mb-1">{t("careerPage.addressLabel")}</p>
                     <p className="text-white">
                       Kneza Mihaila 3, Beograd 11103,
                       <br />
@@ -152,7 +139,7 @@ export default function CareerPage() {
                 <div className="flex items-center gap-3">
                   <Hash className="h-5 w-5 text-[#34bb92] flex-shrink-0" />
                   <p className="text-xs">
-                    <span className="text-gray-400">Activity code:</span>{" "}
+                    <span className="text-gray-400">{t("careerPage.activityCodeLabel")}</span>{" "}
                     <span className="text-white">6209</span>
                   </p>
                 </div>
@@ -160,7 +147,7 @@ export default function CareerPage() {
                 <div className="flex items-center gap-3">
                   <FileText className="h-5 w-5 text-[#34bb92] flex-shrink-0" />
                   <p className="text-xs">
-                    <span className="text-gray-400">PIB:</span>{" "}
+                    <span className="text-gray-400">{t("careerPage.pibLabel")}</span>{" "}
                     <span className="text-white">112317042</span>
                   </p>
                 </div>
@@ -168,7 +155,7 @@ export default function CareerPage() {
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-[#34bb92] flex-shrink-0" />
                   <p className="text-xs">
-                    <span className="text-gray-400">MB:</span>{" "}
+                    <span className="text-gray-400">{t("careerPage.mbLabel")}</span>{" "}
                     <span className="text-white">21649715</span>
                   </p>
                 </div>
@@ -203,7 +190,7 @@ export default function CareerPage() {
                 {/* First and Last Name */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    FIRST AND LAST NAME
+                    {t("careerPage.formNameLabel")}
                   </label>
                   <input
                     type="text"
@@ -218,7 +205,7 @@ export default function CareerPage() {
                 {/* Date of Birth */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    DATE OF BIRTH
+                    {t("careerPage.formDobLabel")}
                   </label>
                   <input
                     type="date"
@@ -233,7 +220,7 @@ export default function CareerPage() {
                 {/* Contact Phone */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    CONTACT PHONE
+                    {t("careerPage.formPhoneLabel")}
                   </label>
                   <input
                     type="tel"
@@ -248,7 +235,7 @@ export default function CareerPage() {
                 {/* Level of Education */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    LEVEL OF EDUCATION
+                    {t("careerPage.formEducationLabel")}
                   </label>
                   <select
                     name="education"
@@ -257,18 +244,18 @@ export default function CareerPage() {
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#34bb92] text-white"
                     required
                   >
-                    <option value="">-viii School (Level 2, vocational qualification)</option>
-                    <option value="high-school">High School</option>
-                    <option value="bachelor">Bachelor&apos;s Degree</option>
-                    <option value="master">Master&apos;s Degree</option>
-                    <option value="phd">PhD</option>
+                    <option value="">{t("careerPage.educationDefault")}</option>
+                    <option value="high-school">{t("careerPage.educationHighSchool")}</option>
+                    <option value="bachelor">{t("careerPage.educationBachelor")}</option>
+                    <option value="master">{t("careerPage.educationMaster")}</option>
+                    <option value="phd">{t("careerPage.educationPhd")}</option>
                   </select>
                 </div>
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium mb-2">EMAIL</label>
+                <label className="block text-sm font-medium mb-2">{t("careerPage.formEmailLabel")}</label>
                 <input
                   type="email"
                   name="email"
@@ -281,7 +268,7 @@ export default function CareerPage() {
 
               {/* Gender */}
               <div>
-                <label className="block text-sm font-medium mb-3">GENDER</label>
+                <label className="block text-sm font-medium mb-3">{t("careerPage.formGenderLabel")}</label>
                 <div className="flex gap-4">
                   <button
                     type="button"
@@ -292,7 +279,7 @@ export default function CareerPage() {
                         : "bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10"
                     }`}
                   >
-                    Man
+                    {t("careerPage.formGenderMan")}
                   </button>
                   <button
                     type="button"
@@ -303,7 +290,7 @@ export default function CareerPage() {
                         : "bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10"
                     }`}
                   >
-                    Woman
+                    {t("careerPage.formGenderWoman")}
                   </button>
                 </div>
               </div>
@@ -311,7 +298,7 @@ export default function CareerPage() {
               {/* Why do you want to work in our company */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  WHY DO YOU WANT TO WORK IN OUR COMPANY?
+                  {t("careerPage.formMotivationLabel")}
                 </label>
                 <textarea
                   name="motivation"
@@ -326,7 +313,7 @@ export default function CareerPage() {
               {/* Upload CV */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  UPLOAD CV
+                  {t("careerPage.formCvLabel")}
                 </label>
                 <div className="relative">
                   <input
@@ -337,7 +324,7 @@ export default function CareerPage() {
                   />
                   {formData.cv && (
                     <p className="mt-2 text-sm text-gray-400">
-                      Selected: {formData.cv.name}
+                      {t("careerPage.formCvSelected")} {formData.cv.name}
                     </p>
                   )}
                 </div>
@@ -348,7 +335,7 @@ export default function CareerPage() {
                 type="submit"
                 className="w-full md:w-auto px-12 py-6 bg-[#34bb92] hover:bg-[#2da578] text-black font-semibold rounded-lg transition-colors"
               >
-                Apply
+                {t("careerPage.formSubmit")}
               </Button>
                   </form>
                 </div>

@@ -5,52 +5,50 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
 import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 import { Check, Users, Target, Code, Handshake } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
 export default function OutsourcingPage() {
+  const { t } = useLanguage();
   const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
 
   const clientNeeds = [
-    "Corporate ownership and accountability (inside)",
-    "Can be entrusted with full project ownership for defined project segments",
-    "Works collaboratively to identify optimal structural solutions",
-    "Delivers clean, maintainable, and well-documented code aligned with their standards",
+    "outsourcingPage.need1",
+    "outsourcingPage.need2",
+    "outsourcingPage.need3",
+    "outsourcingPage.need4",
   ];
 
   const expertise = [
-    "Web application development (ReactJs, NextJs, PHP, MySQL, MongoDB)",
-    "Custom web application development",
-    "Website and corporate platform development",
-    "E-commerce and online store solutions",
-    "Mobile application development (iOS, Android)",
-    "Integration with payment systems",
-    "API integration with external services",
-    "Ongoing technical support",
+    "outsourcingPage.expertise1",
+    "outsourcingPage.expertise2",
+    "outsourcingPage.expertise3",
+    "outsourcingPage.expertise4",
+    "outsourcingPage.expertise5",
+    "outsourcingPage.expertise6",
+    "outsourcingPage.expertise7",
+    "outsourcingPage.expertise8",
   ];
 
   const approaches = [
     {
-      title: "Understanding Your Needs",
+      titleKey: "outsourcingPage.approach1Title",
+      descKey: "outsourcingPage.approach1Desc",
       icon: Target,
-      description:
-        "Our outsourcing approach is founded on understanding your requirements, technical environment, and business objectives. We carefully review existing documentation, systems, and constraints to ensure seamless integration.",
     },
     {
-      title: "Collaborative Partnership",
+      titleKey: "outsourcingPage.approach2Title",
+      descKey: "outsourcingPage.approach2Desc",
       icon: Users,
-      description:
-        "We work as an extension of your team. Our developers integrate into your workflows, communication channels, and development processes to deliver consistent results.",
     },
     {
-      title: "Technical Excellence",
+      titleKey: "outsourcingPage.approach3Title",
+      descKey: "outsourcingPage.approach3Desc",
       icon: Code,
-      description:
-        "Our development standards emphasize performance, scalability, and long-term maintainability aligned with your documentation delivery aims.",
     },
     {
-      title: "Long-Term Focus",
+      titleKey: "outsourcingPage.approach4Title",
+      descKey: "outsourcingPage.approach4Desc",
       icon: Handshake,
-      description:
-        "Our outsourcing services are designed to support long-term cooperation, built on trust, effective reliability, and resource efficiency.",
     },
   ];
 
@@ -67,9 +65,9 @@ export default function OutsourcingPage() {
             transition={{ duration: 0.6 }}
             className="text-start mb-8"
           >
-            <Badge className="mb-4 text-base text-black">DigitalHousePower</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              <span className="text-[#34bb92]">Outsourcing</span>
+            <Badge className="mb-4 text-base text-black">{t("outsourcingPage.badge")}</Badge>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="text-[#77debb]">{t("outsourcingPage.title")}</span>
             </h1>
           </motion.div>
 
@@ -81,29 +79,17 @@ export default function OutsourcingPage() {
             className="mb-12"
           >
             <h2 className="text-xl md:text-2xl font-bold mb-6">
-              If you are looking for a reliable partner
+              {t("outsourcingPage.partnerTitle")}
             </h2>
             <div className="space-y-4 text-sm text-gray-300 text-justify leading-relaxed max-w-5xl">
               <p>
-                DigitalHousePower provides outsourcing services designed to
-                support organizations that require reliable technical capacity,
-                on-demand execution, and predictable delivery. Our team operates
-                as an extension of your internal resources, ensuring continuity
-                while delivering solid results aligned with your operational
-                standards.
+                {t("outsourcingPage.intro1")}
               </p>
               <p>
-                We support partners at different levels of involvement—from full
-                project delivery to participation in specific phases such as
-                analysis, development, integration, or optimization. Our
-                outsourcing model is built on responsibility, transparency, and
-                technical consistency, allowing you to focus on business value
-                while we handle execution and delivery to clients.
+                {t("outsourcingPage.intro2")}
               </p>
               <p>
-                Initial response and engagement planning are typically provided
-                within 24 hours, ensuring timely coordination and rapid alignment
-                on scopes, priorities, and next steps.
+                {t("outsourcingPage.intro3")}
               </p>
             </div>
           </motion.div>
@@ -115,33 +101,28 @@ export default function OutsourcingPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-8"
           >
-            <h2 className="text-xl md:text-2xl font-bold mb-6">How We Work</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-6">{t("outsourcingPage.howWeWorkTitle")}</h2>
             <p className="text-gray-300 text-justify text-sm leading-relaxed max-w-5xl mb-8">
-              Our outsourcing approach is founded on understanding your
-              requirements, technical environment, and business objectives before
-              execution begins. We carefully review existing documentation,
-              systems, and constraints to ensure seamless integration with your
-              operations.
+              {t("outsourcingPage.howWeWorkDesc1")}
             </p>
             <p className="text-gray-300 text-justify text-sm leading-relaxed max-w-5xl mb-12">
-              Clients choose DigitalHousePower when they need a partner who:
+              {t("outsourcingPage.howWeWorkDesc2")}
             </p>
 
             <ul className="space-y-3 max-w-4xl mb-16">
-              {clientNeeds.map((need, index) => (
+              {clientNeeds.map((needKey, index) => (
                 <li
                   key={index}
                   className="flex items-start gap-3 text-gray-300"
                 >
                   <Check className="h-5 w-5 text-[#34bb92] mt-1 flex-shrink-0" />
-                  <span className="text-sm">{need}</span>
+                  <span className="text-sm">{t(needKey)}</span>
                 </li>
               ))}
             </ul>
 
             <p className="text-gray-300 text-sm text-justify leading-relaxed max-w-5xl">
-              Our development standards emphasize performance, scalability, and
-              long-term maintainability rather than short-term delivery alone.
+              {t("outsourcingPage.standards")}
             </p>
           </motion.div>
 
@@ -179,10 +160,10 @@ export default function OutsourcingPage() {
                           <approach.icon className="h-8 w-8 text-[#34bb92]" />
                         </div>
                         <h3 className="text-lg font-bold mb-4">
-                          {approach.title}
+                          {t(approach.titleKey)}
                         </h3>
                         <p className="text-gray-400 text-sm text-justify leading-relaxed">
-                          {approach.description}
+                          {t(approach.descKey)}
                         </p>
                       </div>
                     </div>
@@ -200,21 +181,20 @@ export default function OutsourcingPage() {
             className="mb-16"
           >
             <h2 className="text-xl md:text-2xl font-bold mb-6">
-              Areas of Expertise
+              {t("outsourcingPage.expertiseTitle")}
             </h2>
             <p className="text-gray-300 text-sm text-justify leading-relaxed max-w-5xl mb-8">
-              As part of our outsourcing model, we provide support across a broad
-              range of technologies and solution types, including:
+              {t("outsourcingPage.expertiseIntro")}
             </p>
 
             <div className="grid md:grid-cols-2 gap-4 max-w-5xl">
-              {expertise.map((area, index) => (
+              {expertise.map((expertiseKey, index) => (
                 <div
                   key={index}
                   className="flex items-start gap-3 text-gray-300"
                 >
                   <Check className="h-5 w-5 text-[#34bb92] mt-1 flex-shrink-0" />
-                  <span className="text-sm">{area}</span>
+                  <span className="text-sm">{t(expertiseKey)}</span>
                 </div>
               ))}
             </div>
@@ -228,14 +208,10 @@ export default function OutsourcingPage() {
             className="mb-16 bg-[#0a0a0a] border border-white/10 rounded-2xl p-8"
           >
             <h2 className="text-xl md:text-2xl font-bold mb-4">
-              Long-Term Partnership Focus
+              {t("outsourcingPage.partnershipTitle")}
             </h2>
             <p className="text-gray-300 text-justify text-sm leading-relaxed">
-              Our outsourcing services are designed to support long-term
-              cooperation, built on trust, effective reliability, and resource
-              efficiency. By combining consulting expertise with engineering
-              capability, DigitalHousePower enables organizations to execute
-              projects efficiently while reducing operational risk.
+              {t("outsourcingPage.partnershipDesc")}
             </p>
           </motion.div>
         </div>

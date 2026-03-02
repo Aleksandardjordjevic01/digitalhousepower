@@ -74,10 +74,14 @@ export function HeroGeometric({
     badge = "Design Collective",
     title1 = "Elevate Your Digital Vision",
     title2 = "Crafting Exceptional Websites",
+    description,
+    secondDescription,
 }: {
     badge?: string;
     title1?: string;
     title2?: string;
+    description?: string;
+    secondDescription?: string;
 }) {
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -185,9 +189,16 @@ export function HeroGeometric({
                         initial="hidden"
                         animate="visible"
                     >
-                        <p className="text-base sm:text-lg md:text-base text-white/80 mb-8 leading-relaxed font-light tracking-wide max-w-3xl mx-auto px-4">
-                            We design, implement and maintain secure and scalable IT infrastructure, managed server environments and SLA-based support services built for real operational needs.
-                        </p>
+                        {description && (
+                            <p className="text-base sm:text-lg md:text-lg text-white/80 mb-4 leading-relaxed font-light tracking-wide max-w-3xl mx-auto px-4">
+                                {description}
+                            </p>
+                        )}
+                        {secondDescription && (
+                            <p className="text-sm sm:text-base md:text-sm text-white/70 leading-relaxed font-light tracking-wide max-w-3xl mx-auto px-4">
+                                {secondDescription}
+                            </p>
+                        )}
                     </motion.div>
                 </div>
             </div>

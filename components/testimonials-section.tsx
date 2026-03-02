@@ -2,76 +2,73 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
 
 // --- Types ---
 interface Testimonial {
-  text: string;
+  textKey: string;
   image: string;
-  name: string;
-  role: string;
+  nameKey: string;
+  roleKey: string;
 }
 
 // --- Data ---
-const testimonials: Testimonial[] = [
+const getTestimonials = (): Testimonial[] => [
   {
-    text: "Working with DigitalHousePower transformed our online presence. Their attention to detail and creative approach exceeded our expectations.",
+    textKey: "testimonials.1.text",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Sarah Johnson",
-    role: "CEO, TechStart",
+    nameKey: "testimonials.1.name",
+    roleKey: "testimonials.1.role",
   },
   {
-    text: "The team delivered a stunning website that perfectly captures our brand. The process was smooth and professional from start to finish.",
+    textKey: "testimonials.2.text",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Michael Chen",
-    role: "Marketing Director",
+    nameKey: "testimonials.2.name",
+    roleKey: "testimonials.2.role",
   },
   {
-    text: "Exceptional service and outstanding results. Our new e-commerce platform has significantly increased our online sales.",
+    textKey: "testimonials.3.text",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Emma Davis",
-    role: "Store Owner",
+    nameKey: "testimonials.3.name",
+    roleKey: "testimonials.3.role",
   },
   {
-    text: "Their digital marketing strategy took our business to the next level. We've seen tremendous growth in engagement and conversions.",
+    textKey: "testimonials.4.text",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "David Wilson",
-    role: "Business Owner",
+    nameKey: "testimonials.4.name",
+    roleKey: "testimonials.4.role",
   },
   {
-    text: "Professional, creative, and results-driven. They truly understand modern web design and user experience.",
+    textKey: "testimonials.5.text",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Lisa Anderson",
-    role: "Product Manager",
+    nameKey: "testimonials.5.name",
+    roleKey: "testimonials.5.role",
   },
   {
-    text: "The maintenance and support service is exceptional. They're always available and respond quickly to any issues.",
+    textKey: "testimonials.6.text",
     image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "James Brown",
-    role: "IT Manager",
+    nameKey: "testimonials.6.name",
+    roleKey: "testimonials.6.role",
   },
   {
-    text: "Our SEO rankings improved dramatically after working with them. Highly recommend their services!",
+    textKey: "testimonials.7.text",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Robert Taylor",
-    role: "Operations Director",
+    nameKey: "testimonials.7.name",
+    roleKey: "testimonials.7.role",
   },
   {
-    text: "They delivered exactly what we needed – a modern, fast, and beautiful website that our customers love.",
+    textKey: "testimonials.8.text",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Sophie Martinez",
-    role: "Creative Director",
+    nameKey: "testimonials.8.name",
+    roleKey: "testimonials.8.role",
   },
   {
-    text: "Outstanding graphic design work. They captured our vision perfectly and brought our brand to life.",
+    textKey: "testimonials.9.text",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Alex Turner",
-    role: "Brand Manager",
+    nameKey: "testimonials.9.name",
+    roleKey: "testimonials.9.role",
   },
 ];
-
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
 
 // --- Sub-Components ---
 const TestimonialsColumn = (props: {
@@ -79,6 +76,8 @@ const TestimonialsColumn = (props: {
   testimonials: Testimonial[];
   duration?: number;
 }) => {
+  const { t } = useLanguage();
+  
   return (
     <div className={`flex-1 ${props.className || ''}`}>
       <motion.ul
@@ -96,7 +95,7 @@ const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
+              {props.testimonials.map(({ textKey, image, nameKey, roleKey }, i) => (
                 <motion.li 
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
@@ -110,22 +109,22 @@ const TestimonialsColumn = (props: {
                 >
                   <blockquote className="m-0 p-0">
                     <p className="text-gray-400 leading-relaxed font-normal m-0 text-sm">
-                      {text}
+                      {t(textKey)}
                     </p>
                     <footer className="flex items-center gap-3 mt-6">
                       <img
                         width={40}
                         height={40}
                         src={image}
-                        alt={`Avatar of ${name}`}
+                        alt={`Avatar of ${t(nameKey)}`}
                         className="h-10 w-10 rounded-full object-cover ring-2 ring-white/10 group-hover:ring-[#34bb92]/30 transition-all duration-300"
                       />
                       <div className="flex flex-col">
                         <cite className="font-semibold not-italic tracking-tight leading-5 text-white">
-                          {name}
+                          {t(nameKey)}
                         </cite>
                         <span className="text-xs leading-5 tracking-tight text-gray-500 mt-0.5">
-                          {role}
+                          {t(roleKey)}
                         </span>
                       </div>
                     </footer>
@@ -141,6 +140,12 @@ const TestimonialsColumn = (props: {
 };
 
 export const TestimonialsSection = () => {
+  const { t } = useLanguage();
+  const testimonials = getTestimonials();
+  const firstColumn = testimonials.slice(0, 3);
+  const secondColumn = testimonials.slice(3, 6);
+  const thirdColumn = testimonials.slice(6, 9);
+  
   return (
     <section 
       aria-labelledby="testimonials-heading"
@@ -159,12 +164,12 @@ export const TestimonialsSection = () => {
         <div className="flex flex-col items-start max-w-[640px] mb-16">
           <div className="flex">
             <div className="border border-white/10 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-gray-400 bg-white/5">
-              You won’t believe this
+              {t("testimonials.badge")}
             </div>
           </div>
 
           <h2 id="testimonials-heading" className="text-xl sm:text-3xl font-bold text-white tracking-tight mt-6 text-start">
-            Our Clients Can’t Say Anything Bad About Us
+            {t("testimonials.heading")}
           </h2>
         </div>
 

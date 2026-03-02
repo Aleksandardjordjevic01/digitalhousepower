@@ -10,8 +10,10 @@ import {
   ShoppingCart, 
   TrendingUp 
 } from 'lucide-react';
+import { useLanguage } from '@/lib/language-context';
 
 export const ServicesSection = () => {
+  const { t } = useLanguage();
   const customColors = ['#56ede5', '#fed21e'];
   
   return (
@@ -19,10 +21,10 @@ export const ServicesSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-[1300px] mx-auto">
           <h2 className="text-xl sm:text-3xl font-bold text-white text-start mb-4">
-            Digital services we provide
+            {t('services.title')}
           </h2>
           <p className="text-start text-gray-400 mb-12 max-w-3xl text-sm">
-            We combine design, development, and marketing to ensure your business has a strong and visible online presence.
+            {t('services.subtitle')}
           </p>
           
           <CursorCardsContainer className="bento-grid">
@@ -33,8 +35,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<LayoutTemplate className="w-6 h-6 text-black" />}
-                title="WEBSITE DEVELOPMENT"
-                description="Modern, responsive, and functional sites tailored to your brand."
+                title={t('services.web.title')}
+                description={t('services.web.desc')}
               />
             </CursorCard>
             
@@ -45,8 +47,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<Palette className="w-6 h-6 text-black" />}
-                title="GRAPHIC DESIGN"
-                description="Creative visual solutions for online and offline communication."
+                title={t('services.design.title')}
+                description={t('services.design.desc')}
               />
             </CursorCard>
             
@@ -57,8 +59,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<Megaphone className="w-6 h-6 text-black" />}
-                title="DIGITAL MARKETING"
-                description="Result-driven campaigns – advertising, social media, SEO."
+                title={t('services.marketing.title')}
+                description={t('services.marketing.desc')}
               />
             </CursorCard>
             
@@ -69,8 +71,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<Wrench className="w-6 h-6 text-black" />}
-                title="MAINTENANCE & SUPPORT"
-                description="Worry-free care for your website and systems, with no stress or downtime."
+                title={t('services.maintenance.title')}
+                description={t('services.maintenance.desc')}
               />
             </CursorCard>
             
@@ -81,8 +83,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<ShoppingCart className="w-6 h-6 text-black" />}
-                title="E-COMMERCE SOLUTIONS"
-                description="Online stores that sell, websites that convert designed to engage and built to perform."
+                title={t('services.ecommerce.title')}
+                description={t('services.ecommerce.desc')}
               />
             </CursorCard>
             
@@ -93,8 +95,8 @@ export const ServicesSection = () => {
             >
               <BentoItem
                 icon={<TrendingUp className="w-6 h-6 text-black" />}
-                title="SEO OPTIMIZATION"
-                description="Better search engine ranking, more visitors and clients bringing your business the visibility it deserves."
+                title={t('services.seo.title')}
+                description={t('services.seo.desc')}
               />
             </CursorCard>
           </CursorCardsContainer>

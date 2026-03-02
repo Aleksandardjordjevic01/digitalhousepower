@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedDotsBackground } from "@/components/animated-dots-background";
 import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
+import { useLanguage } from "@/lib/language-context";
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const glowColors = ["#6536a1", "#3f97e7", "#59dbe9", "#21dcdb", "#7cf8ee", "#fddf60", "#ffbb01"];
   const [formData, setFormData] = useState({
     firstName: "",
@@ -28,13 +30,13 @@ export default function ContactPage() {
   ];
 
   const interestOptions = [
-    "Site from scratch",
-    "UX/UI design",
-    "Product design",
-    "Webflow site",
-    "Motion design",
-    "Branding",
-    "Mobile development",
+    { key: "contactPage.interestSiteFromScratch", value: "Site from scratch" },
+    { key: "contactPage.interestUxUi", value: "UX/UI design" },
+    { key: "contactPage.interestProductDesign", value: "Product design" },
+    { key: "contactPage.interestWebflow", value: "Webflow site" },
+    { key: "contactPage.interestMotion", value: "Motion design" },
+    { key: "contactPage.interestBranding", value: "Branding" },
+    { key: "contactPage.interestMobile", value: "Mobile development" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -69,19 +71,19 @@ export default function ContactPage() {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      labelKey: "contactPage.infoEmail",
       value: "office@digitalhousepower.com",
       href: "mailto:office@digitalhousepower.com",
     },
     {
       icon: Phone,
-      label: "Phone",
+      labelKey: "contactPage.infoPhone",
       value: "+381 61/7773 519",
       href: "tel:+381617773519",
     },
     {
       icon: MapPin,
-      label: "Address",
+      labelKey: "contactPage.infoAddress",
       value: "Kneza Mihaila 3, Beograd 11103",
       href: "https://maps.google.com/?q=Kneza+Mihaila+3,+Beograd",
     },
@@ -100,13 +102,12 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <Badge className="mb-4 text-base text-black">Get in Touch</Badge>
+            <Badge className="mb-4 text-base text-black">{t("contactPage.badge")}</Badge>
             <h1 className="text-3xl md:text-5xl font-bold mb-6">
-              Let&apos;s Start a <span className="text-[#34bb92]">Conversation</span>
+              {t("contactPage.title")} <span className="text-[#34bb92]">{t("contactPage.titleHighlight")}</span>
             </h1>
             <p className="text-base text-gray-400 max-w-2xl mx-auto">
-              Have a project in mind? We&apos;d love to hear about it. Send us a message
-              and we&apos;ll get back to you as soon as possible.
+              {t("contactPage.subtitle")}
             </p>
           </motion.div>
 
@@ -136,7 +137,7 @@ export default function ContactPage() {
                     htmlFor="firstName"
                     className="block text-sm font-medium mb-2"
                   >
-                    Your First Name
+                    {t("contactPage.formFirstName")}
                   </label>
                   <input
                     type="text"
@@ -146,7 +147,7 @@ export default function ContactPage() {
                     value={formData.firstName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter your first name"
+                    placeholder={t("contactPage.formFirstNamePlaceholder")}
                   />
                 </div>
 
@@ -155,7 +156,7 @@ export default function ContactPage() {
                     htmlFor="lastName"
                     className="block text-sm font-medium mb-2"
                   >
-                    Your Last Name
+                    {t("contactPage.formLastName")}
                   </label>
                   <input
                     type="text"
@@ -165,7 +166,7 @@ export default function ContactPage() {
                     value={formData.lastName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter your last name"
+                    placeholder={t("contactPage.formLastNamePlaceholder")}
                   />
                 </div>
 
@@ -174,7 +175,7 @@ export default function ContactPage() {
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
                   >
-                    Email Address
+                    {t("contactPage.formEmail")}
                   </label>
                   <input
                     type="email"
@@ -184,13 +185,13 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors"
-                    placeholder="Enter your email"
+                    placeholder={t("contactPage.formEmailPlaceholder")}
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-3">
-                    Project Budget (USD)
+                    {t("contactPage.formBudget")}
                   </label>
                   <div className="flex flex-wrap gap-3">
                     {budgetOptions.map((option) => (
@@ -215,7 +216,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-sm font-medium mb-2"
                   >
-                    Your Message
+                    {t("contactPage.formMessage")}
                   </label>
                   <textarea
                     id="message"
@@ -225,7 +226,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-[#030303] border border-white/10 rounded-lg focus:outline-none focus:border-[#34bb92] transition-colors resize-none"
-                    placeholder="Start typing a message..."
+                    placeholder={t("contactPage.formMessagePlaceholder")}
                   />
                 </div>
 
@@ -233,7 +234,7 @@ export default function ContactPage() {
                   type="submit"
                   className="w-full text-black py-6 font-medium"
                 >
-                  Send
+                  {t("contactPage.formSend")}
                 </Button>
                     </form>
                   </div>
@@ -249,26 +250,26 @@ export default function ContactPage() {
               className="flex flex-col space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-bold mb-4">Project Budget</h2>
+                <h2 className="text-2xl font-bold mb-4">{t("contactPage.budgetTitle")}</h2>
                 <p className="text-gray-400 mb-6">
-                  What is your budget for the project? This helps us provide the best solution tailored to your needs.
+                  {t("contactPage.budgetDesc")}
                 </p>
                 
                 <div className="mb-8">
-                  <h3 className="text-lg font-semibold mb-4">I&apos;m interested in...</h3>
+                  <h3 className="text-lg font-semibold mb-4">{t("contactPage.interestTitle")}</h3>
                   <div className="flex flex-wrap gap-3">
                     {interestOptions.map((option) => (
                       <button
-                        key={option}
+                        key={option.value}
                         type="button"
-                        onClick={() => handleInterestSelect(option)}
+                        onClick={() => handleInterestSelect(option.value)}
                         className={`px-5 py-2.5 rounded-full border transition-all font-medium text-sm ${
-                          formData.interest === option
+                          formData.interest === option.value
                             ? "bg-[#34bb92] border-[#34bb92] text-black"
                             : "bg-[#030303] border-white/10 text-gray-300 hover:border-[#34bb92]/50"
                         }`}
                       >
-                        {option}
+                        {t(option.key)}
                       </button>
                     ))}
                   </div>
@@ -304,7 +305,7 @@ export default function ContactPage() {
                           <item.icon className="h-5 w-5 text-[#34bb92]" />
                         </div>
                         <div className="relative z-10">
-                          <p className="text-sm text-gray-400 mb-1">{item.label}</p>
+                          <p className="text-sm text-gray-400 mb-1">{t(item.labelKey)}</p>
                           <p className="font-medium">{item.value}</p>
                         </div>
                       </a>
@@ -328,19 +329,19 @@ export default function ContactPage() {
                   
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="text-lg font-semibold mb-4">Office Hours</h3>
+                    <h3 className="text-lg font-semibold mb-4">{t("contactPage.officeHoursTitle")}</h3>
                     <div className="space-y-3 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Monday - Friday</span>
-                        <span className="font-medium">9:00 AM - 5:00 PM</span>
+                        <span className="text-gray-400">{t("contactPage.officeHoursMonFri")}</span>
+                        <span className="font-medium">{t("contactPage.officeHoursMonFriTime")}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Saturday</span>
-                        <span className="font-medium">10:00 AM - 2:00 PM</span>
+                        <span className="text-gray-400">{t("contactPage.officeHoursSat")}</span>
+                        <span className="font-medium">{t("contactPage.officeHoursSatTime")}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-400">Sunday</span>
-                        <span className="font-medium">Closed</span>
+                        <span className="text-gray-400">{t("contactPage.officeHoursSun")}</span>
+                        <span className="font-medium">{t("contactPage.officeHoursSunTime")}</span>
                       </div>
                     </div>
                   </div>
@@ -368,9 +369,9 @@ export default function ContactPage() {
                 <div className="absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
                 
                 <div className="relative z-10 p-6 border-b border-white/10">
-                <h2 className="text-2xl font-bold">Our Location</h2>
+                <h2 className="text-2xl font-bold">{t("contactPage.mapTitle")}</h2>
                 <p className="text-gray-400 mt-2">
-                  Visit us at our office in the heart of Belgrade
+                  {t("contactPage.mapSubtitle")}
                 </p>
               </div>
               <div className="relative h-[400px] md:h-[500px]">

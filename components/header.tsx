@@ -7,39 +7,43 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
+import { useLanguage } from '@/lib/language-context';
+import { LanguageSelector } from '@/components/language-selector';
 
 export function Header() {
 	const [open, setOpen] = React.useState(false);
-	const scrolled = useScroll(10);
+	// const scrolled = useScroll(10); // Disabled for now - uncomment to enable header shrinking on scroll
+	const scrolled = false; // Set to false to disable header shrinking behavior
 	const pathname = usePathname();
+	const { t } = useLanguage();
 
 	const links = [
 		{
-			label: 'About us',
+			label: t('nav.about'),
 			href: '/about-us',
 		},
 		{
-			label: 'Services',
+			label: t('nav.services'),
 			href: '/services',
 		},
 		{
-			label: 'Support Service Levels',
+			label: t('nav.support'),
 			href: '/support-service-levels',
 		},
 		{
-			label: 'Server packages',
+			label: t('nav.packages'),
 			href: '/server-packages',
 		},
 		{
-			label: 'Smart city',
+			label: t('nav.smartcity'),
 			href: '/smart-city',
 		},
 		{
-			label: 'Outsourcing',
+			label: t('nav.outsourcing'),
 			href: '/outsourcing',
 		},
 		{
-			label: 'Career',
+			label: t('nav.career'),
 			href: '/career',
 		},
 	];
@@ -62,22 +66,14 @@ export function Header() {
 	return (
 		<header
 			className={cn(
-				'sticky top-0 z-50 mx-auto border-b border-transparent md:border md:transition-all md:duration-300 md:ease-in-out md:rounded-xl',
+				'sticky top-4 z-50 mx-4 mb-4 rounded-xl border bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg',
 				{
-					'md:mt-4 max-w-[1300px] w-full bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg md:top-4 md:shadow':
-						scrolled && !open,
-					'md:my-4 w-full max-w-[calc(100%-2rem)]': !scrolled && !open,
 					'bg-background/90': open,
 				},
 			)}
 		>
 			<nav
-				className={cn(
-					'flex h-[72px] w-full items-center justify-center px-6 md:h-[90px] md:transition-all md:duration-300 md:ease-in-out',
-					{
-						'md:px-4': scrolled,
-					},
-				)}
+				className="flex h-[72px] w-full items-center justify-center px-6 md:h-[90px] md:transition-all md:duration-300 md:ease-in-out"
 			>
 				<div className="absolute left-6">
 					<Link href="/">
@@ -122,9 +118,10 @@ export function Header() {
 						}
 					})}
 				</div>
-				<div className="absolute right-6 hidden md:block">
-					<Button asChild className='text-black px-6 py-6'>
-						<Link href="/contact">Request Consultation</Link>
+				<div className="absolute right-6 hidden md:flex md:items-center md:gap-3">
+					<LanguageSelector />
+					<Button asChild className='bg-[#cd9805] hover:bg-[#a06b08] text-black px-6 py-6'>
+						<Link href="/contact">{t('nav.contact')}</Link>
 					</Button>
 				</div>
 				<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden absolute right-6">
@@ -182,8 +179,9 @@ export function Header() {
 						})}
 					</div>
 					<div className="flex flex-col gap-2">
-						<Button asChild className="w-full text-black">
-							<Link href="/contact">Request Consultation</Link>
+						<LanguageSelector />
+						<Button asChild className="w-full bg-[#cd9805] hover:bg-[#a06b08] text-black">
+							<Link href="/contact">{t('nav.contact')}</Link>
 						</Button>
 					</div>
 				</div>
