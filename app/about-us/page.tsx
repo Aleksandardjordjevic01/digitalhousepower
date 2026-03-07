@@ -121,29 +121,29 @@ export default function AboutUsPage() {
       <AnimatedDotsBackground />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-20 md:pb-0 overflow-hidden">
-        <div className="relative max-w-[1300px] mx-auto px-8 z-10">
+      <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16 overflow-hidden">
+        <div className="relative max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-start mb-12"
+            className="text-start mb-8 sm:mb-10 md:mb-12"
           >
-            <Badge className="mb-4 text-base text-black">{t('aboutPage.badge')}</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#77debb]">{t('aboutPage.title')}</h1>
+            <Badge className="mb-3 sm:mb-4 text-sm sm:text-base text-black">{t('aboutPage.badge')}</Badge>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-[#77debb]">{t('aboutPage.title')}</h1>
           </motion.div>
         </div>
       </section>
 
       {/* Company Introduction Section */}
       <section className="relative px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-8">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-6 sm:mb-8">
               {t('aboutPage.introTitle')}
             </h2>
             
@@ -163,10 +163,10 @@ export default function AboutUsPage() {
       </section>
 
       {/* Image Slider Section */}
-      <section className="relative py-12 overflow-hidden">
+      <section className="relative py-8 sm:py-10 md:py-12 overflow-hidden">
         <div className="[mask-image:linear-gradient(to_right,transparent_0%,black_10%,black_90%,transparent_100%)]">
           <InfiniteSlider gap={24} duration={40} durationOnHover={80}>
-            <div className="relative w-[400px] h-[612px] rounded-xl overflow-hidden">
+            <div className="relative w-[280px] sm:w-[340px] md:w-[400px] h-[428px] sm:h-[520px] md:h-[612px] rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/developers.webp"
                 alt={t('aboutPage.imageAlt1')}
@@ -174,7 +174,7 @@ export default function AboutUsPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-[400px] h-[612px] rounded-xl overflow-hidden">
+            <div className="relative w-[280px] sm:w-[340px] md:w-[400px] h-[428px] sm:h-[520px] md:h-[612px] rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/graphic-designer.webp"
                 alt={t('aboutPage.imageAlt2')}
@@ -182,7 +182,7 @@ export default function AboutUsPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-[400px] h-[612px] rounded-xl overflow-hidden">
+            <div className="relative w-[280px] sm:w-[340px] md:w-[400px] h-[428px] sm:h-[520px] md:h-[612px] rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/marketing-strategy.webp"
                 alt={t('aboutPage.imageAlt3')}
@@ -190,7 +190,7 @@ export default function AboutUsPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative w-[400px] h-[612px] rounded-xl overflow-hidden">
+            <div className="relative w-[280px] sm:w-[340px] md:w-[400px] h-[428px] sm:h-[520px] md:h-[612px] rounded-xl overflow-hidden">
               <Image
                 src="/assets/images/video-editor.webp"
                 alt={t('aboutPage.imageAlt4')}
@@ -203,24 +203,24 @@ export default function AboutUsPage() {
       </section>
 
       {/* Core Principles Section */}
-      <section className="relative pb-12 px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative pb-8 sm:pb-10 md:pb-12 px-4 z-20">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-10"
+            className="space-y-6 sm:space-y-8 md:space-y-10"
           >
             {/* Our Consulting Approach */}
-            <div className="flex items-start justify-between gap-8 pb-16 border-b border-gray-800">
+            <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8 pb-8 sm:pb-12 md:pb-16 border-b border-gray-800">
               <div className="flex-1">
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
                   {t('aboutPage.consultingTitle')}
                 </h2>
-                <h3 className="text-lg font-semibold text-gray-300 mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-4 sm:mb-6">
                   {t('aboutPage.consultingSubtitle')}
                 </h3>
-                <div className="space-y-4 text-sm text-gray-300 text-justify leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 text-justify leading-relaxed">
                   <p>
                     {t('aboutPage.consultingPara1')}
                   </p>
@@ -235,15 +235,15 @@ export default function AboutUsPage() {
             </div>
 
             {/* Design, Digital Solutions, and User Experience */}
-            <div className="flex items-start justify-between gap-8 pb-16 border-b border-gray-800">
+            <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8 pb-8 sm:pb-12 md:pb-16 border-b border-gray-800">
               <div className="flex-1">
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
                   {t('aboutPage.designTitle')}
                 </h2>
-                <h3 className="text-lg font-semibold text-gray-300 mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-4 sm:mb-6">
                   {t('aboutPage.designSubtitle')}
                 </h3>
-                <div className="space-y-4 text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
                   <p>
                     {t('aboutPage.designPara1')}
                   </p>
@@ -256,22 +256,22 @@ export default function AboutUsPage() {
                 </div>
               </div>
               <div className="flex-shrink-0 hidden md:block">
-                <div className="w-20 h-20 rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
-                  <PenTool className="w-10 h-10 text-[#34bb92]" />
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg md:rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
+                  <PenTool className="w-8 h-8 md:w-10 md:h-10 text-[#34bb92]" />
                 </div>
               </div>
             </div>
 
             {/* Technology and Engineering */}
-            <div className="flex items-start justify-between gap-8 pb-16 border-b border-gray-800">
+            <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8 pb-8 sm:pb-12 md:pb-16 border-b border-gray-800">
               <div className="flex-1">
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
                   {t('aboutPage.technologyTitle')}
                 </h2>
-                <h3 className="text-lg font-semibold text-gray-300 mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-4 sm:mb-6">
                   {t('aboutPage.technologySubtitle')}
                 </h3>
-                <div className="space-y-4 text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
                   <p>
                     {t('aboutPage.technologyPara1')}
                   </p>
@@ -284,22 +284,22 @@ export default function AboutUsPage() {
                 </div>
               </div>
               <div className="flex-shrink-0 hidden md:block">
-                <div className="w-20 h-20 rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
-                  <Wrench className="w-10 h-10 text-[#34bb92]" />
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg md:rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
+                  <Wrench className="w-8 h-8 md:w-10 md:h-10 text-[#34bb92]" />
                 </div>
               </div>
             </div>
 
             {/* Public and Private Sector Expertise */}
-            <div className="flex items-start justify-between gap-8 pb-16 border-b border-gray-800">
+            <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8 pb-8 sm:pb-12 md:pb-16 border-b border-gray-800">
               <div className="flex-1">
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
                   {t('aboutPage.expertiseTitle')}
                 </h2>
-                <h3 className="text-lg font-semibold text-gray-300 mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-4 sm:mb-6">
                   {t('aboutPage.expertiseSubtitle')}
                 </h3>
-                <div className="space-y-4 text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
                   <p>
                     {t('aboutPage.expertisePara1')}
                   </p>
@@ -309,22 +309,22 @@ export default function AboutUsPage() {
                 </div>
               </div>
               <div className="flex-shrink-0 hidden md:block">
-                <div className="w-20 h-20 rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
-                  <ShieldCheck className="w-10 h-10 text-[#34bb92]" />
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg md:rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
+                  <ShieldCheck className="w-8 h-8 md:w-10 md:h-10 text-[#34bb92]" />
                 </div>
               </div>
             </div>
 
             {/* Commitment to Quality and Professional Standards */}
-            <div className="flex items-start justify-between gap-8">
+            <div className="flex items-start justify-between gap-4 sm:gap-6 md:gap-8">
               <div className="flex-1">
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4">
                   {t('aboutPage.qualityTitle')}
                 </h2>
-                <h3 className="text-lg font-semibold text-gray-300 mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-4 sm:mb-6">
                   {t('aboutPage.qualitySubtitle')}
                 </h3>
-                <div className="space-y-4 text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 max-w-[850px] text-justify leading-relaxed">
                   <p>
                     {t('aboutPage.qualityPara1')}
                   </p>
@@ -334,8 +334,8 @@ export default function AboutUsPage() {
                 </div>
               </div>
               <div className="flex-shrink-0 hidden md:block">
-                <div className="w-20 h-20 rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
-                  <Award className="w-10 h-10 text-[#34bb92]" />
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg md:rounded-xl bg-[#34bb92]/10 border border-[#34bb92]/30 flex items-center justify-center">
+                  <Award className="w-8 h-8 md:w-10 md:h-10 text-[#34bb92]" />
                 </div>
               </div>
             </div>
@@ -345,20 +345,20 @@ export default function AboutUsPage() {
 
       {/* Technologies We Use Section */}
       <section className="relative px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3">
               {t('aboutPage.techSectionTitle')}
             </h2>
-            <h3 className="text-lg font-semibold mb-4 text-gray-300">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-300">
               {t('aboutPage.techSectionSubtitle')}
             </h3>
             
-            <div className="space-y-4 text-sm text-gray-300 text-justify leading-relaxed max-w-5xl mb-12">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 text-justify leading-relaxed max-w-5xl mb-8 sm:mb-10 md:mb-12">
               <p>
                 {t('aboutPage.techSectionPara1')}
               </p>
@@ -408,18 +408,18 @@ export default function AboutUsPage() {
         </div>
       </section>
       {/* Technology as a Strategic Tool Section */}
-      <section className="relative py-8 px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8">
+      <section className="relative py-6 sm:py-7 md:py-8 px-4 z-20">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <div className="bg-[#34bb92]/50 rounded-2xl p-8 md:p-12 border border-[#34bb92]/80">
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-6">
+            <div className="bg-[#34bb92]/50 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-12 border border-[#34bb92]/80">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4 sm:mb-5 md:mb-6">
                 {t('aboutPage.strategicToolTitle')}
               </h2>
-              <p className="text-white/90 text-sm leading-relaxed text-justify">
+              <p className="text-white/90 text-xs sm:text-sm leading-relaxed text-justify">
                 {t('aboutPage.strategicToolDesc')}
               </p>
             </div>
@@ -428,21 +428,21 @@ export default function AboutUsPage() {
       </section>
 
       {/* Additional IT consulting services */}
-    <section className="relative pb-10 px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8 relative z-20">
+    <section className="relative pb-8 sm:pb-9 md:pb-10 px-4 z-20">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 2.2 }}
             className=""
           >
-            <h2 className="text-xl md:text-2xl font-bold mb-4">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4">
               {t('aboutPage.additionalTitle')}
             </h2>
-            <h3 className="text-lg font-semibold mb-6 text-gray-300">
+            <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-gray-300">
               {t('aboutPage.additionalSubtitle')}
             </h3>
-            <div className="space-y-4 text-sm text-gray-300 text-justify leading-relaxed max-w-5xl mb-12">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-300 text-justify leading-relaxed max-w-5xl mb-8 sm:mb-10 md:mb-12">
               <p>
                 {t('aboutPage.additionalPara1')}
               </p>
@@ -493,8 +493,8 @@ export default function AboutUsPage() {
         </section>
 
       {/* Certificates and Quality Standards Section */}
-      <section className="relative pb-10 px-4 z-20">
-        <div className="max-w-[1300px] mx-auto px-8 relative z-20">
+      <section className="relative pb-8 sm:pb-9 md:pb-10 px-4 z-20">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -502,47 +502,47 @@ export default function AboutUsPage() {
             transition={{ duration: 0.5 }}
             className="relative z-20"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 relative z-20">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6 sm:mb-7 md:mb-8 relative z-20">
               {t('aboutPage.measurableSupportTitle')}
             </h2>
             
-            <p className="text-white text-sm mb-10 text-justify leading-relaxed">
+            <p className="text-white text-xs sm:text-sm mb-8 sm:mb-9 md:mb-10 text-justify leading-relaxed">
               {t('aboutPage.measurableSupportDesc')}
             </p>
 
-            <div className="flex items-center gap-3 mb-8">
-              <Badge className="bg-[#34bb92] text-black hover:bg-[#2da578] text-sm font-bold px-5 py-2">
+            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-7 md:mb-8">
+              <Badge className="bg-[#34bb92] text-black hover:bg-[#2da578] text-xs sm:text-sm font-bold px-3 sm:px-4 md:px-5 py-1.5 sm:py-2">
                 {t('aboutPage.qualityBadge')}
               </Badge>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-5 md:mb-6">
               {t('aboutPage.certificatesTitle')}
             </h3>
 
-            <h4 className="text-lg font-bold text-[#34bb92] mb-8">
+            <h4 className="text-base sm:text-lg font-bold text-[#34bb92] mb-6 sm:mb-7 md:mb-8">
               {t('aboutPage.certificatesSubtitle')}
             </h4>
 
-            <p className="text-white text-sm mb-6 text-justify leading-relaxed">
+            <p className="text-white text-xs sm:text-sm mb-4 sm:mb-5 md:mb-6 text-justify leading-relaxed">
               {t('aboutPage.certificatesPara1')}
             </p>
 
-            <p className="text-white text-sm mb-6 text-justify leading-relaxed">
+            <p className="text-white text-xs sm:text-sm mb-4 sm:mb-5 md:mb-6 text-justify leading-relaxed">
               {t('aboutPage.certificatesPara2')}
             </p>
 
-            <p className="text-white text-sm mb-8 text-justify leading-relaxed">
+            <p className="text-white text-xs sm:text-sm mb-6 sm:mb-7 md:mb-8 text-justify leading-relaxed">
               {t('aboutPage.certificatesPara3')}
             </p>
 
             <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="companies-reputation" className="border-2 border-[#34bb92]/50 rounded-lg px-6 bg-[#030303]/80 data-[state=open]:bg-[#030303]">
-                <AccordionTrigger className="text-base no-underline font-bold text-white hover:text-[#34bb92] py-4">
+              <AccordionItem value="companies-reputation" className="border-2 border-[#34bb92]/50 rounded-lg px-4 sm:px-5 md:px-6 bg-[#030303]/80 data-[state=open]:bg-[#030303]">
+                <AccordionTrigger className="text-sm sm:text-base no-underline font-bold text-white hover:text-[#34bb92] py-3 sm:py-4">
                   {t('aboutPage.accordionTitle')}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="grid md:grid-cols-2 gap-6 pt-4 pb-2">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 pt-3 sm:pt-4 pb-2">
                     <div className="relative w-full rounded-lg overflow-hidden bg-[#1a1a1a] border border-[#34bb92]/20">
                       <Image
                         src="/assets/images/za-dobru-reputaciju-scaled.png"

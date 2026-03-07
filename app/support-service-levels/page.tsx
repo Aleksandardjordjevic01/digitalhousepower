@@ -63,28 +63,28 @@ export default function SupportServiceLevelsPage() {
       <AnimatedDotsBackground />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-20 md:pb-12 overflow-hidden">
-        <div className="relative max-w-[1300px] mx-auto px-8 z-10">
+      <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16 overflow-hidden">
+        <div className="relative max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-start mb-16"
+            className="text-start mb-8 sm:mb-12 md:mb-16"
           >
-            <Badge className="mb-4 text-base text-black">{t("supportPage.badge")}</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#77debb]">
+            <Badge className="mb-3 sm:mb-4 text-sm sm:text-base text-black">{t("supportPage.badge")}</Badge>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 md:mb-6 text-[#77debb]">
               {t("supportPage.title")}
             </h1>
-            <p className="text-xl md:text-2xl text-start uppercase font-semibold text-gray-300 mb-4">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-start uppercase font-semibold text-gray-300 mb-3 sm:mb-4">
               {t("supportPage.subtitle")}
             </p>
-            <p className="text-sm text-white/70 max-w-4xl text-justify">
+            <p className="text-xs sm:text-sm text-white/70 max-w-4xl text-justify">
               {t("supportPage.description")}
             </p>
           </motion.div>
 
           {/* Support Packages Grid */}
-          <CursorCardsContainer className="grid md:grid-cols-3 gap-8 mb-16 md:auto-rows-fr">
+          <CursorCardsContainer className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16 md:auto-rows-fr">
             {supportPackages.map((pkg, index) => {
               const glowColor = glowColors[index % glowColors.length];
               return (
@@ -96,37 +96,37 @@ export default function SupportServiceLevelsPage() {
                 className="flex"
               >
                 <CursorCard 
-                  className="h-full rounded-3xl w-full"
+                  className="h-full rounded-2xl sm:rounded-3xl w-full"
                   glowColor={glowColor}
                   borderColor={glowColor}
                   glowIntensity={500}
                 >
-                  <div className="relative rounded-3xl overflow-hidden bg-black/[0.7] border border-white/[0.12] flex flex-col gap-3 p-4 shadow-lg w-full h-full">
+                  <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-black/[0.7] border border-white/[0.12] flex flex-col gap-2 sm:gap-3 p-3 sm:p-4 shadow-lg w-full h-full">
                     {/* Glossy overlay effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
                     <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
                     
                     {/* Content */}
-                    <div className="relative z-10 flex flex-col gap-3 h-full">
+                    <div className="relative z-10 flex flex-col gap-2 sm:gap-3 h-full">
                       {/* Header */}
                       <div className="shrink-0">
                         <div
-                          className={`bg-gradient-to-r ${pkg.gradient} rounded-2xl p-6`}
+                          className={`bg-gradient-to-r ${pkg.gradient} rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6`}
                         >
-                          <div className="flex items-center gap-3 mb-3">
-                            <pkg.icon className="h-6 w-6 text-black" />
-                            <p className="text-sm font-semibold text-black">DHP</p>
+                          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                            <pkg.icon className="h-5 w-5 sm:h-6 sm:w-6 text-black" />
+                            <p className="text-xs sm:text-sm font-semibold text-black">DHP</p>
                           </div>
-                          <h3 className="text-base font-bold text-black">
+                          <h3 className="text-sm sm:text-base font-bold text-black">
                             {t(pkg.titleKey)}
                           </h3>
                         </div>
                       </div>
 
                       {/* Content */}
-                      <div className="flex-grow p-3 flex flex-col min-h-0">
+                      <div className="flex-grow p-2 sm:p-3 flex flex-col min-h-0">
                         {/* Package Description */}
-                        <div className="min-h-[120px] mb-4">
+                        <div className="min-h-[100px] sm:min-h-[120px] mb-3 sm:mb-4">
                           <p className="text-gray-300 text-xs text-justify leading-relaxed">
                             {t(pkg.descKey)}
                           </p>
@@ -134,17 +134,17 @@ export default function SupportServiceLevelsPage() {
 
                         {/* Includes Section */}
                         <div>
-                          <h4 className="text-sm font-semibold mb-4 text-white">
+                          <h4 className="text-xs sm:text-sm font-semibold mb-3 sm:mb-4 text-white">
                             {t("supportPage.includesLabel")}
                           </h4>
-                          <ul className="space-y-3">
+                          <ul className="space-y-2 sm:space-y-3">
                             {pkg.includeKeys.map((includeKey, idx) => (
                               <li
                                 key={idx}
-                                className="flex items-start gap-3 text-gray-300"
+                                className="flex items-start gap-2 sm:gap-3 text-gray-300"
                               >
-                                <Check className="h-5 w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
-                                <span className="text-sm">{t(includeKey)}</span>
+                                <Check className="h-4 w-4 sm:h-5 sm:w-5 text-[#34bb92] mt-0.5 flex-shrink-0" />
+                                <span className="text-xs sm:text-sm">{t(includeKey)}</span>
                               </li>
                             ))}
                           </ul>

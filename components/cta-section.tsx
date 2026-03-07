@@ -76,49 +76,49 @@ export function CTASection({
   className,
 }: CTAProps) {
   return (
-    <section className={cn("pb-16 md:pb-24 bg-[#030303]", className)}>
-      <CursorCardsContainer className="mx-auto max-w-[1300px] px-8">
+    <section className={cn("pb-12 sm:pb-16 md:pb-24 bg-[#030303]", className)}>
+      <CursorCardsContainer className="mx-auto max-w-[1300px] px-4 sm:px-6 md:px-8">
         <CursorCard 
           borderColor="#6536a1"
           glowColor="#6536a1"
           glowIntensity={600}
-          className="rounded-3xl overflow-visible relative"
+          className="rounded-2xl sm:rounded-3xl overflow-visible relative"
         >
-          <div className="relative flex flex-col items-center border-1 border-gray-600 gap-6 px-8 py-12 text-center sm:gap-4 md:py-32 bg-[#0a0a0a] rounded-2xl overflow-visible">
+          <div className="relative flex flex-col items-center border-1 border-gray-600 gap-4 sm:gap-6 px-6 sm:px-8 py-10 sm:py-12 md:py-32 text-center bg-[#0a0a0a] rounded-xl sm:rounded-2xl overflow-visible">
             {/* Animated Edge Glow - all sides including top */}
             {withGlow && (
-              <div className="pointer-events-none absolute inset-0 rounded-2xl animate-glow-pulse delay-700">
-                <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_120px_rgba(101,54,161,0.6),inset_0_0_80px_rgba(101,54,161,0.5),inset_0_0_40px_rgba(101,54,161,0.4)]" />
+              <div className="pointer-events-none absolute inset-0 rounded-xl sm:rounded-2xl animate-glow-pulse delay-700">
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl shadow-[inset_0_0_80px_rgba(101,54,161,0.5),inset_0_0_50px_rgba(101,54,161,0.4),inset_0_0_30px_rgba(101,54,161,0.3)] sm:shadow-[inset_0_0_120px_rgba(101,54,161,0.6),inset_0_0_80px_rgba(101,54,161,0.5),inset_0_0_40px_rgba(101,54,161,0.4)]" />
               </div>
             )}
             
             {/* Floating Paths Background */}
-            <div className="absolute inset-0 opacity-70 overflow-hidden rounded-2xl">
+            <div className="absolute inset-0 opacity-60 sm:opacity-70 overflow-hidden rounded-xl sm:rounded-2xl">
               <FloatingPaths position={1} />
               <FloatingPaths position={-1} />
             </div>
             
             {/* Fade to black overlay */}
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(ellipse_at_center,_transparent_0%,_transparent_40%,_#0a0a0a_100%)]" />
+            <div className="pointer-events-none absolute inset-0 rounded-xl sm:rounded-2xl bg-[radial-gradient(ellipse_at_center,_transparent_0%,_transparent_40%,_#0a0a0a_100%)]" />
             
             {/* Badge */}
             {badge && (
               <Badge
                 variant="outline"
-                className="opacity-0 animate-fade-in-up delay-100 border-gray-700 text-gray-400 relative z-10"
+                className="opacity-0 animate-fade-in-up delay-100 border-gray-700 text-gray-400 relative z-10 text-xs sm:text-sm"
               >
                 <span>{badge.text}</span>
               </Badge>
             )}
 
             {/* Title */}
-            <h2 className="text-3xl font-semibold sm:text-3xl opacity-0 animate-fade-in-up delay-200 text-white relative z-10">
+            <h2 className="text-2xl sm:text-3xl md:text-3xl font-semibold opacity-0 animate-fade-in-up delay-200 text-white relative z-10 px-4">
               {title}
             </h2>
 
             {/* Description */}
             {description && (
-              <p className="text-white/70 text-sm opacity-0 animate-fade-in-up delay-300 max-w-xl relative z-10">
+              <p className="text-white/70 text-xs sm:text-sm opacity-0 animate-fade-in-up delay-300 max-w-xl relative z-10 px-4">
                 {description}
               </p>
             )}
@@ -126,7 +126,7 @@ export function CTASection({
             {/* Action Button */}
             <Button
               size="lg"
-              className="mt-6 opacity-0 animate-fade-in-up delay-500 bg-white hover:bg-gray-200 text-black px-12 py-6 font-semibold relative z-10"
+              className="mt-4 sm:mt-6 opacity-0 animate-fade-in-up delay-500 bg-white hover:bg-gray-200 text-black px-8 sm:px-12 py-5 sm:py-6 font-semibold relative z-10 text-sm sm:text-base"
               asChild
             >
               <a href={action.href}>{action.text}</a>

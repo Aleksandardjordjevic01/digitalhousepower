@@ -137,17 +137,17 @@ export default function SmartCityPage() {
     <div className="min-h-screen bg-[#030303] text-foreground relative overflow-hidden">
       <AnimatedDotsBackground />
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-20 md:pb-24 overflow-hidden">
+      <section className="relative pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-24 overflow-hidden">
 
-        <div className="relative max-w-[1300px] mx-auto px-8 z-10">
+        <div className="relative max-w-[1300px] mx-auto px-4 sm:px-6 md:px-8 z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-start mb-4"
+            className="text-start mb-3 sm:mb-4"
           >
-            <Badge className="mb-4 text-base text-black">{t("smartCityPage.badge")}</Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
+            <Badge className="mb-3 sm:mb-4 text-sm sm:text-base text-black">{t("smartCityPage.badge")}</Badge>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 md:mb-6">
               <span className="text-[#77debb]">{t("smartCityPage.title")}</span>
             </h1>
           </motion.div>
@@ -157,18 +157,18 @@ export default function SmartCityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-16 text-start"
+            className="mb-8 sm:mb-12 md:mb-16 text-start"
           >
-            <h2 className="text-xl md:text-2xl text-start uppercase font-semibold text-gray-300 mb-4">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-start uppercase font-semibold text-gray-300 mb-3 sm:mb-4">
               {t("smartCityPage.subtitle")}
             </h2>
-            <p className="text-sm text-white/70 max-w-4xl text-justify">
+            <p className="text-xs sm:text-sm text-white/70 max-w-4xl text-justify">
               {t("smartCityPage.description")}
             </p>
           </motion.div>
 
           {/* Main Solutions Cards */}
-          <CursorCardsContainer className="grid md:grid-cols-3 gap-8 mb-24">
+          <CursorCardsContainer className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 md:mb-24">
             {mainSolutions.map((solution, index) => {
               const glowColor = glowColors[index % glowColors.length];
               return (
@@ -180,12 +180,12 @@ export default function SmartCityPage() {
                 className="flex"
               >
                 <CursorCard 
-                  className="h-full rounded-2xl w-full"
+                  className="h-full rounded-xl sm:rounded-2xl w-full"
                   glowColor={glowColor}
                   borderColor={glowColor}
                   glowIntensity={500}
                 >
-                  <div className="relative rounded-2xl overflow-hidden bg-black/[0.4] backdrop-blur-sm border border-white/[0.12] flex flex-col h-full">
+                  <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-black/[0.4] backdrop-blur-sm border border-white/[0.12] flex flex-col h-full">
                     {/* Glossy overlay effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none" />
                     <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none" />
@@ -194,7 +194,7 @@ export default function SmartCityPage() {
                     <div className="relative z-10 flex flex-col h-full">
                       {/* Colored Header */}
                       <div
-                        className="h-48 flex items-center justify-center relative bg-[#37a987]/15 backdrop-blur-lg"
+                        className="h-32 sm:h-40 md:h-48 flex items-center justify-center relative bg-[#37a987]/15 backdrop-blur-lg"
                       >
                         {/* Inner glow effect */}
                         <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(55,169,135,0.6),inset_0_0_50px_rgba(55,169,135,0.4),inset_0_0_30px_rgba(55,169,135,0.3)]" />
@@ -208,41 +208,41 @@ export default function SmartCityPage() {
                           alt={t(solution.titleKey)}
                           width={200}
                           height={200}
-                          className="object-contain p-4 relative z-10"
+                          className="object-contain p-2 sm:p-3 md:p-4 relative z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48"
                         />
                       </div>
 
                       {/* Content */}
-                      <div className="p-6 flex flex-col flex-1">
-                        <h3 className="text-lg font-bold mb-3 text-center">
+                      <div className="p-4 sm:p-5 md:p-6 flex flex-col flex-1">
+                        <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-3 text-center">
                           {t(solution.titleKey)}
                         </h3>
-                        <p className="text-gray-400 text-xs mb-4 text-center italic">
+                        <p className="text-gray-400 text-xs mb-3 sm:mb-4 text-center italic">
                           {t(solution.descriptionKey)}
                         </p>
-                        <p className="text-gray-400 text-xs mb-6 text-justify leading-relaxed">
+                        <p className="text-gray-400 text-xs mb-4 sm:mb-5 md:mb-6 text-justify leading-relaxed">
                           {t(solution.detailedDescriptionKey)}
                         </p>
 
-                        <div className="mb-6">
-                          <h4 className="text-sm font-semibold mb-3 text-gray-300">
+                        <div className="mb-4 sm:mb-5 md:mb-6">
+                          <h4 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 text-gray-300">
                             {t("smartCityPage.keyServiceAreasLabel")}
                           </h4>
-                          <ul className="space-y-2">
+                          <ul className="space-y-1.5 sm:space-y-2">
                             {solution.keyServiceAreaKeys.map((areaKey, idx) => (
                               <li
                                 key={idx}
-                                className="flex items-start gap-2 text-xs text-gray-400"
+                                className="flex items-start gap-1.5 sm:gap-2 text-xs text-gray-400"
                               >
-                                <Check className="h-4 w-4 text-[#34bb92] mt-0.5 flex-shrink-0" />
+                                <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#34bb92] mt-0.5 flex-shrink-0" />
                                 <span>{t(areaKey)}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="pt-4 border-t border-white/10 mt-auto">
-                          <h4 className="text-sm font-semibold mb-2 text-gray-300">
+                        <div className="pt-3 sm:pt-4 border-t border-white/10 mt-auto">
+                          <h4 className="text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2 text-gray-300">
                             {t("smartCityPage.valueDeliveredLabel")}
                           </h4>
                           <p className="text-xs text-gray-400 italic">
@@ -262,16 +262,16 @@ export default function SmartCityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mb-16"
+            className="mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-xl md:text-3xl font-bold mb-4 text-center">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 text-center">
               {t("smartCityPage.integration.title")}
             </h2>
-            <p className="text-gray-400 text-sm text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-gray-400 text-xs sm:text-sm text-center mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto">
               {t("smartCityPage.integration.subtitle")}
             </p>
 
-            <CursorCardsContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CursorCardsContainer className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
               {systemsIntegration.map((item, index) => {
                 const glowColor = glowColors[index % glowColors.length];
                 return (
@@ -282,22 +282,22 @@ export default function SmartCityPage() {
                   transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
                 >
                   <CursorCard 
-                    className="h-full rounded-2xl"
+                    className="h-full rounded-xl sm:rounded-2xl"
                     glowColor={glowColor}
                     borderColor={glowColor}
                     glowIntensity={500}
                   >
-                    <div className="relative rounded-2xl p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
+                    <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
                       {/* Glossy overlay effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
-                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-xl sm:rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-xl sm:rounded-2xl" />
                       
                       {/* Content */}
                       <div className="relative z-10">
-                        <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl w-fit mx-auto">
-                          <item.icon className="h-12 w-12 text-[#34bb92]" />
+                        <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-[#34bb92]/10 rounded-lg sm:rounded-xl w-fit mx-auto">
+                          <item.icon className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-[#34bb92]" />
                         </div>
-                        <h3 className="text-sm font-semibold">{t(item.titleKey)}</h3>
+                        <h3 className="text-xs sm:text-sm font-semibold">{t(item.titleKey)}</h3>
                       </div>
                     </div>
                   </CursorCard>
@@ -305,7 +305,7 @@ export default function SmartCityPage() {
               )})}
             </CursorCardsContainer>
 
-            <p className="text-gray-400 text-sm text-center mt-12 max-w-3xl mx-auto">
+            <p className="text-gray-400 text-xs sm:text-sm text-center mt-8 sm:mt-10 md:mt-12 max-w-3xl mx-auto">
               {t("smartCityPage.integration.footer")}
             </p>
           </motion.div>
@@ -315,16 +315,16 @@ export default function SmartCityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="mb-16"
+            className="mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">
               {t("smartCityPage.role.title")}
             </h2>
-            <p className="text-gray-400 text-sm text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-gray-400 text-xs sm:text-sm text-center mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto">
               {t("smartCityPage.role.subtitle")}
             </p>
 
-            <CursorCardsContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CursorCardsContainer className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
               {ourRole.map((item, index) => {
                 const glowColor = glowColors[(index + 4) % glowColors.length];
                 return (
@@ -335,22 +335,22 @@ export default function SmartCityPage() {
                   transition={{ duration: 0.5, delay: 1.3 + index * 0.1 }}
                 >
                   <CursorCard 
-                    className="h-full rounded-2xl"
+                    className="h-full rounded-xl sm:rounded-2xl"
                     glowColor={glowColor}
                     borderColor={glowColor}
                     glowIntensity={500}
                   >
-                    <div className="relative rounded-2xl p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
+                    <div className="relative rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 h-full flex flex-col items-center text-center bg-black/[0.7] border border-white/[0.12]">
                       {/* Glossy overlay effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-2xl" />
-                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] via-transparent to-transparent opacity-50 pointer-events-none rounded-xl sm:rounded-2xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tl from-white/[0.03] via-transparent to-transparent opacity-70 pointer-events-none rounded-xl sm:rounded-2xl" />
                       
                       {/* Content */}
                       <div className="relative z-10">
-                        <div className="mb-4 p-4 bg-[#34bb92]/10 rounded-xl w-fit mx-auto">
-                          <item.icon className="h-12 w-12 text-[#34bb92]" />
+                        <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-[#34bb92]/10 rounded-lg sm:rounded-xl w-fit mx-auto">
+                          <item.icon className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-[#34bb92]" />
                         </div>
-                        <h3 className="text-sm font-semibold">{t(item.titleKey)}</h3>
+                        <h3 className="text-xs sm:text-sm font-semibold">{t(item.titleKey)}</h3>
                       </div>
                     </div>
                   </CursorCard>
@@ -358,7 +358,7 @@ export default function SmartCityPage() {
               )})}
             </CursorCardsContainer>
 
-            <p className="text-gray-400 text-center text-sm mt-12 max-w-3xl mx-auto">
+            <p className="text-gray-400 text-center text-xs sm:text-sm mt-8 sm:mt-10 md:mt-12 max-w-3xl mx-auto">
               {t("smartCityPage.role.footer")}
             </p>
           </motion.div>

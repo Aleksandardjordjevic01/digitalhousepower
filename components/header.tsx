@@ -64,6 +64,7 @@ export function Header() {
 	}, [open]);
 
 	return (
+		<>
 		<header
 			className={cn(
 				'sticky top-4 z-50 mx-4 mb-4 rounded-xl border bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg',
@@ -86,7 +87,7 @@ export function Header() {
 						/>
 					</Link>
 				</div>
-				<div className="hidden items-center gap-2 md:flex">
+				<div className="hidden items-center gap-2 lg:flex">
 					{links.map((link, i) => {
 						// Use Link component for full routes, <a> for hash links
 						const isHashLink = link.href.startsWith('#');
@@ -118,31 +119,58 @@ export function Header() {
 						}
 					})}
 				</div>
-				<div className="absolute right-6 hidden md:flex md:items-center md:gap-3">
+				<div className="absolute right-6 hidden lg:flex lg:items-center lg:gap-3">
 					<LanguageSelector />
 					<Button asChild className='bg-[#cd9805] hover:bg-[#a06b08] text-black px-6 py-6'>
 						<Link href="/contact">{t('nav.contact')}</Link>
 					</Button>
 				</div>
-				<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden absolute right-6">
+				<Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="lg:hidden absolute right-6">
 					<MenuToggleIcon open={open} className="size-5" duration={300} />
 				</Button>
 			</nav>
+		</header>
 
+		{/* Mobile Drawer - Outside header, fixed to viewport */}
+		{open && (
 			<div
-				className={cn(
-					'bg-background/90 fixed top-[72px] right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
-					open ? 'block' : 'hidden',
-				)}
+				className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm lg:hidden"
+				onClick={() => setOpen(false)}
 			>
+				<div
+					className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-black/70 backdrop-blur-xl border-l border-white/20 overflow-hidden shadow-2xl"
+					onClick={(e) => e.stopPropagation()}
+				>
 				<div
 					data-slot={open ? 'open' : 'closed'}
 					className={cn(
-						'data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out',
-						'flex h-full w-full flex-col justify-between gap-y-2 p-4',
+						'data-[slot=open]:animate-in data-[slot=open]:fade-in data-[slot=open]:slide-in-from-right duration-300',
+						'flex h-full w-full flex-col justify-between gap-y-4 p-6 overflow-y-auto',
 					)}
 				>
-					<div className="grid gap-y-2">
+					<div className="flex flex-col gap-y-4">
+						<button
+							onClick={() => setOpen(false)}
+							className="self-start p-2 hover:bg-white/5 rounded-lg transition-colors"
+							aria-label="Close menu"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="text-gray-400 hover:text-white"
+							>
+								<line x1="18" y1="6" x2="6" y2="18"></line>
+								<line x1="6" y1="6" x2="18" y2="18"></line>
+							</svg>
+						</button>
+						<div className="grid gap-y-3">
 						{links.map((link) => {
 							const isHashLink = link.href.startsWith('#');
 							const isActive = !isHashLink && pathname === link.href;
@@ -153,7 +181,7 @@ export function Header() {
 										key={link.label}
 										className={buttonVariants({
 											variant: 'ghost',
-											className: 'justify-start',
+											className: 'justify-start text-base h-12',
 										})}
 										href={link.href}
 										onClick={() => setOpen(false)}
@@ -167,7 +195,7 @@ export function Header() {
 										key={link.label}
 										className={buttonVariants({
 											variant: 'ghost',
-											className: cn('justify-start', isActive && 'text-[#34bb92] bg-[#34bb92]/10'),
+											className: cn('justify-start text-base h-12', isActive && 'text-[#34bb92] bg-[#34bb92]/10'),
 										})}
 										href={link.href}
 										onClick={() => setOpen(false)}
@@ -177,16 +205,19 @@ export function Header() {
 								);
 							}
 						})}
+						</div>
 					</div>
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-row items-center gap-3 pt-4 border-t border-white/10">
 						<LanguageSelector />
-						<Button asChild className="w-full bg-[#cd9805] hover:bg-[#a06b08] text-black">
-							<Link href="/contact">{t('nav.contact')}</Link>
+						<Button asChild className="flex-1 h-12 bg-[#cd9805] hover:bg-[#a06b08] text-black text-sm font-medium">
+							<Link href="/contact" onClick={() => setOpen(false)}>{t('nav.contact')}</Link>
 						</Button>
 					</div>
 				</div>
+				</div>
 			</div>
-		</header>
+		)}
+		</>
 	);
 }
 

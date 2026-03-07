@@ -31,7 +31,7 @@ export default function Home() {
         description={t('home.hero.description')}
         secondDescription={t('home.hero.secondDescription')}
       />
-      <section className="w-full py-12 bg-[#030303]">
+      <section className="w-full py-8 sm:py-10 md:py-12 bg-[#030303]">
         <div className="container mx-auto px-4">
           <div className="max-w-[1300px] mx-auto overflow-hidden">
             <LogoCloud logos={logos} />

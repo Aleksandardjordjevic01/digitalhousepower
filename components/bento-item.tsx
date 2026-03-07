@@ -36,11 +36,11 @@ export const BentoItem = ({ className, icon, title, description, children }: Ben
   return (
     <div ref={itemRef} className={cn('bento-item', className)}>
       {icon && (
-        <div className="mb-6 w-14 h-14 rounded-xl bg-[#34bb92] flex items-center justify-center">
+        <div className="mb-4 sm:mb-6 w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-[#34bb92] flex items-center justify-center">
           {icon}
         </div>
       )}
-      <h3 className="text-base font-bold text-white mb-2">{title}</h3>
+      <h3 className="text-sm sm:text-base font-bold text-white mb-2">{title}</h3>
       <p className="text-xs text-gray-400 text-justify leading-relaxed">{description}</p>
       {children}
     </div>

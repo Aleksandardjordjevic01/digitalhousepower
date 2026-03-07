@@ -105,19 +105,19 @@ const TestimonialsColumn = (props: {
                     y: -8,
                     transition: { type: "spring", stiffness: 400, damping: 17 }
                   }}
-                  className="p-8 rounded-2xl border border-white/10 shadow-lg w-full bg-neutral-900/50 backdrop-blur-sm transition-all duration-300 cursor-default select-none hover:border-[#34bb92]/30 focus:outline-none focus:ring-2 focus:ring-[#34bb92]/30" 
+                  className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-white/10 shadow-lg w-full bg-neutral-900/50 backdrop-blur-sm transition-all duration-300 cursor-default select-none hover:border-[#34bb92]/30 focus:outline-none focus:ring-2 focus:ring-[#34bb92]/30" 
                 >
                   <blockquote className="m-0 p-0">
-                    <p className="text-gray-400 leading-relaxed font-normal m-0 text-sm">
+                    <p className="text-gray-400 leading-relaxed font-normal m-0 text-xs sm:text-sm">
                       {t(textKey)}
                     </p>
-                    <footer className="flex items-center gap-3 mt-6">
+                    <footer className="flex items-center gap-2 sm:gap-3 mt-4 sm:mt-6">
                       <img
                         width={40}
                         height={40}
                         src={image}
                         alt={`Avatar of ${t(nameKey)}`}
-                        className="h-10 w-10 rounded-full object-cover ring-2 ring-white/10 group-hover:ring-[#34bb92]/30 transition-all duration-300"
+                        className="h-8 w-8 sm:h-10 sm:w-10 rounded-full object-cover ring-2 ring-white/10 group-hover:ring-[#34bb92]/30 transition-all duration-300"
                       />
                       <div className="flex flex-col">
                         <cite className="font-semibold not-italic tracking-tight leading-5 text-white">
@@ -149,7 +149,7 @@ export const TestimonialsSection = () => {
   return (
     <section 
       aria-labelledby="testimonials-heading"
-      className="w-full py-24 bg-[#030303] relative overflow-hidden"
+      className="w-full py-12 sm:py-16 md:py-24 bg-[#030303] relative overflow-hidden"
     >
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
@@ -159,22 +159,22 @@ export const TestimonialsSection = () => {
           duration: 1.2, 
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="container px-4 z-10 mx-auto max-w-[1300px]"
+        className="container px-4 sm:px-6 z-10 mx-auto max-w-[1300px]"
       >
-        <div className="flex flex-col items-start max-w-[640px] mb-16">
+        <div className="flex flex-col items-start max-w-[640px] mb-10 sm:mb-16">
           <div className="flex">
-            <div className="border border-white/10 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-gray-400 bg-white/5">
+            <div className="border border-white/10 py-1 px-3 sm:px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-gray-400 bg-white/5">
               {t("testimonials.badge")}
             </div>
           </div>
 
-          <h2 id="testimonials-heading" className="text-xl sm:text-3xl font-bold text-white tracking-tight mt-6 text-start">
+          <h2 id="testimonials-heading" className="text-2xl sm:text-3xl md:text-3xl font-bold text-white tracking-tight mt-4 sm:mt-6 text-start">
             {t("testimonials.heading")}
           </h2>
         </div>
 
         <div 
-          className="flex justify-start gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden w-full"
+          className="flex justify-start gap-4 sm:gap-6 mt-8 sm:mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[600px] sm:max-h-[740px] overflow-hidden w-full"
           role="region"
           aria-label="Scrolling Testimonials"
         >

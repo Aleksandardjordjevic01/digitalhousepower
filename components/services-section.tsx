@@ -17,13 +17,13 @@ export const ServicesSection = () => {
   const customColors = ['#56ede5', '#fed21e'];
   
   return (
-    <section className="w-full py-16 bg-[#030303]">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-12 sm:py-16 bg-[#030303]">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-[1300px] mx-auto">
-          <h2 className="text-xl sm:text-3xl font-bold text-white text-start mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold text-white text-start mb-3 sm:mb-4">
             {t('services.title')}
           </h2>
-          <p className="text-start text-gray-400 mb-12 max-w-3xl text-sm">
+          <p className="text-start text-gray-400 mb-8 sm:mb-12 max-w-3xl text-sm sm:text-base">
             {t('services.subtitle')}
           </p>
           
